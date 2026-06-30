@@ -1,0 +1,417 @@
+/* =========================================================
+   announcements.css
+   Page-specific styles for the Notice Board & Announcements
+   ========================================================= */
+
+   :root {
+    --ann-teal: #2a9d8f;
+    --ann-card-bg: #eceaf3;
+    --ann-border-light: #e3e1ee;
+  }
+  
+  /* ---------- HERO ---------- */
+  .ann-hero {
+    position: relative;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0;
+    /* ✅ FIX — lightened overlay so notice.jpg is actually visible */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(10, 31, 63, 0.65) 60%, rgba(0, 0, 0, 0.30) 100%),
+    url('notice.jpg') center/cover no-repeat;
+    color: var(--white);
+    text-align: left;
+  }
+
+  /* ✅ FIX — force hero content to align left inside container */
+  .ann-hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F5B922; /* Changed from var(--accent-gold) */
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    font-family: var(--font-body);
+  }
+  
+  .hero-eyebrow::before { 
+    content: ''; 
+    width: 26px; 
+    height: 2px; 
+    background: #F5B922; /* Changed from var(--accent-gold) */
+  }
+
+  .ann-hero h1 { font-size: 48px; margin-bottom: 18px; color: var(--white); }
+  .ann-hero p { max-width: 600px; font-size: 15.5px; line-height: 1.7; color: #e4e4ee; }
+  
+  /* ---------- LATEST ANNOUNCEMENTS ---------- */
+  .announcements-section { padding: 60px 20px 30px; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .eyebrow-small {
+    color: var(--accent-gold);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+  }
+  .archive-link {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  
+  .ann-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+  .ann-card {
+    background: var(--ann-card-bg);
+    border-radius: 12px;
+    padding: 22px;
+    border-left: 4px solid transparent;
+  }
+  .ann-card.urgent {
+    border-left-color: var(--ann-teal);
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    padding: 45px;
+  }
+  .ann-card.meeting { border-left-color: var(--primary-dark); }
+  .ann-card.holiday { border-left-color: var(--ann-teal); }
+  .ann-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+  }
+  .badge-urgent { background: #fde8d8; color: #b85c1a; }
+  .ann-date { font-size: 13px; color: var(--text-muted); }
+  .ann-card h3 { font-size: 19px; color: var(--primary-dark); margin-bottom: 10px; }
+  .ann-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+  .ann-list { margin-bottom: 14px; }
+  .ann-list li { font-size: 13.5px; color: var(--text-dark); margin-bottom: 6px; display: flex; gap: 6px; align-items: center; }
+  .ann-list li::before { content: '✓'; color: var(--ann-teal); font-weight: 700; }
+  .ann-meta { font-size: 13.5px; font-weight: 700; color: var(--primary-dark); margin-bottom: 14px; }
+  .ann-footer-row { display: flex; justify-content: space-between; align-items: center; }
+  
+  .btn-navy-full {
+    background: var(--primary-dark);
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: 0.3s;
+  }
+  .btn-navy-full:hover { background: var(--primary-light); }
+  .ann-card.urgent .btn-navy-full { margin-top: auto; }
+  .link-arrow { font-size: 13.5px; color: var(--primary-dark); font-weight: 600; cursor: pointer; }
+  .link-download { font-size: 13.5px; color: var(--ann-teal); font-weight: 600; cursor: pointer; }
+  
+  .academics-banner {
+    background: var(--ann-card-bg);
+    border-radius: 12px;
+    padding: 26px;
+    border-left: 4px solid var(--accent-gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    grid-column: span 2;
+  }
+  .academics-left { flex: 1; min-width: 250px; }
+  .academics-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-gold);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .academics-left h3 { font-size: 22px; color: var(--primary-dark); margin-bottom: 8px; }
+  .academics-left p { font-size: 14px; color: var(--text-muted); }
+  .academics-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  
+  /* ---------- EXAM NOTICES ---------- */
+  .exam-section { padding: 70px 20px; }
+  .section-title-center { text-align: center; margin-bottom: 50px; }
+  
+  .exam-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 22px; }
+  .exam-card.priority { grid-row: span 2; }
+  .exam-annual { grid-column: span 2; }
+  .exam-card {
+    border-radius: 12px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+  }
+  .exam-card.dark { background: var(--primary-dark); color: #fff; }
+  .exam-card.light { background: #fff; border: 1px solid var(--ann-border-light); }
+  .exam-card.priority { background: #fff; border: 1.5px solid var(--accent-gold); position: relative; overflow: hidden; }
+  .exam-tag {
+    display: inline-block; font-size: 11px; font-weight: 700; padding: 5px 12px;
+    border-radius: 14px; margin-bottom: 16px; letter-spacing: 0.5px; width: fit-content;
+  }
+  .exam-tag.upcoming { background: #fff; color: var(--primary-dark); }
+  .exam-tag.midterm { background: #f1f0f8; color: var(--text-dark); }
+  .exam-tag.priority-tag { background: #f6e3b0; color: #8a6512; }
+  .exam-card h3 { font-size: 22px; margin-bottom: 10px; }
+  .exam-card.dark h3 { color: #fff; }
+  .exam-card.light h3, .exam-card.priority h3 { color: var(--primary-dark); }
+  .exam-card p { font-size: 13.5px; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+  .exam-card.dark p { color: #cfd2e0; }
+  .exam-card.light p, .exam-card.priority p { color: var(--text-muted); }
+  .exam-btn-row { display: flex; gap: 10px; align-items: center; }
+  
+  /* Exam specific buttons */
+  .btn-exam-light {
+    background: #fff; color: var(--primary-dark); border: none; padding: 11px 18px;
+    border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer; flex: 1;
+  }
+  .btn-exam-navy {
+    background: var(--primary-dark); color: #fff; border: none; padding: 11px 18px;
+    border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer; flex: 1;
+  }
+  .icon-btn {
+    width: 42px; height: 42px; border-radius: 8px; border: 1px solid #ddd; background: #fff;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
+  }
+  .exam-card.dark .icon-btn { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: #fff; }
+  .exam-card .ghost { height: 60px; }
+  .priority-circle {
+    position: absolute; top: -40px; right: -40px; width: 140px; height: 140px;
+    border-radius: 50%; background: #fbf3df;
+  }
+  .btn-full-gold {
+    background: var(--accent-gold); color: #fff; border: none; padding: 13px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; margin-bottom: 10px;
+  }
+  .btn-full-outline-gold {
+    background: #fff; color: var(--accent-gold); border: 1.5px solid var(--accent-gold); padding: 13px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  
+  .exam-annual { background: var(--ann-card-bg); border-radius: 12px; padding: 30px; }
+  .exam-annual h3 { font-size: 22px; color: var(--primary-dark); margin-bottom: 6px; }
+  .exam-annual .sub { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+  .exam-annual p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+  .exam-annual .exam-btn-row { max-width: 340px; }
+  
+  /* ---------- HOLIDAY + EVENTS ---------- */
+  .holiday-events {
+    padding: 30px 20px 70px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 50px;
+  }
+  .holiday-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+  .table-scroll {
+    max-height: 340px; overflow-y: auto; border-radius: 10px;
+    background: #fff; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: var(--ann-teal) #eee;
+    border: 1px solid var(--ann-border-light);
+  }
+  .table-scroll::-webkit-scrollbar { width: 7px; }
+  .table-scroll::-webkit-scrollbar-track { background: #f0f0f5; }
+  .table-scroll::-webkit-scrollbar-thumb { background: var(--ann-teal); border-radius: 10px; }
+  
+  .table-scroll table { width: 100%; border-collapse: collapse; background: #fff; font-family: var(--font-body); }
+  .table-scroll thead tr { background: var(--primary-dark); color: #fff; }
+  .table-scroll thead th { position: sticky; top: 0; background: var(--primary-dark); z-index: 1; }
+  .table-scroll th, .table-scroll td { padding: 14px 18px; text-align: left; font-size: 14px; }
+  .table-scroll th:last-child, .table-scroll td:last-child { text-align: right; }
+  .table-scroll tbody tr { border-bottom: 1px solid #eee; }
+  .table-scroll tbody tr:last-child { border-bottom: none; }
+  .table-scroll td { color: var(--text-dark); }
+  .table-scroll td:first-child { font-weight: 600; }
+  
+  .holiday-note {
+    font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.5;
+    background: var(--ann-card-bg); padding: 10px 14px; border-radius: 8px;
+  }
+  .download-cal-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--ann-teal); color: #fff; border: none; padding: 13px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 18px; width: 100%;
+  }
+  
+  .events-head h2 { margin-bottom: 20px; }
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: #d8d6e6;
+  }
+  .timeline-item { position: relative; margin-bottom: 30px; }
+  .timeline-dot {
+    position: absolute; left: -24px; top: 4px; width: 12px; height: 12px; border-radius: 50%;
+  }
+  .timeline-item:nth-child(1) .timeline-dot { background: var(--primary-dark); }
+  .timeline-item:nth-child(2) .timeline-dot { background: var(--ann-teal); }
+  .timeline-item:nth-child(3) .timeline-dot { background: var(--accent-gold); }
+  .timeline-date { font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px; }
+  .timeline-item h4 { font-family: var(--font-heading); font-size: 19px; color: var(--primary-dark); margin-bottom: 6px; }
+  .timeline-item p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+  
+  /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+  @media (max-width: 1024px) {
+    .ann-grid { grid-template-columns: repeat(2, 1fr); }
+    .ann-card.urgent { grid-row: auto; }
+    .academics-banner { grid-column: 1 / -1; }
+    .exam-grid { grid-template-columns: repeat(2, 1fr); }
+    .exam-card.priority { grid-row: span 2; }
+    .exam-annual { grid-column: span 1; }
+    .holiday-events { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .ann-hero h1 { font-size: 34px; }
+    .ann-hero { min-height: 300px; padding: 40px 0; }
+    .table-scroll table { font-size: 12.5px; }
+    .table-scroll th, .table-scroll td { padding: 10px 12px; }
+    .table-scroll { max-height: 280px; }
+  }
+  @media (max-width: 560px) {
+    .ann-grid { grid-template-columns: 1fr; }
+    .exam-grid { grid-template-columns: 1fr; }
+    .exam-card.priority { grid-row: auto; }
+    .exam-annual { grid-column: auto; }
+    .academics-banner { flex-direction: column; align-items: flex-start; }
+    .academics-actions { width: 100%; }
+    .academics-actions button { flex: 1; }
+    .section-head { flex-direction: column; align-items: flex-start; }
+  }
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+/* ---------- LOGO IMAGE ---------- */
+.logo-image-fixed {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ---------- HERO LOAD ANIMATIONS ---------- */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-animate {
+  opacity: 0;
+  animation: heroFadeUp 0.6s ease forwards;
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease calc(var(--reveal-delay, 0s)),
+              transform 0.55s ease calc(var(--reveal-delay, 0s));
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- CARD HOVER LIFT ---------- */
+.ann-card,
+.exam-card,
+.exam-annual {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ann-card:hover,
+.exam-card:hover,
+.exam-annual:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(10, 31, 63, 0.10);
+}
+
+/* ---------- BUTTON HOVER TRANSITIONS ---------- */
+.btn-navy-full,
+.btn-full-gold,
+.btn-full-outline-gold,
+.btn-exam-light,
+.btn-exam-navy,
+.download-cal-btn {
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+.btn-navy-full:hover,
+.btn-full-gold:hover,
+.download-cal-btn:hover { opacity: 0.88; }
+.btn-full-outline-gold:hover { background: #fdf5e0; }
+.btn-exam-light:hover,
+.btn-exam-navy:hover { opacity: 0.85; }
+.icon-btn {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.icon-btn:hover { background: #f0f0f8; transform: scale(1.08); }
+
+/* ---------- URGENT BADGE PULSE ---------- */
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 92, 26, 0.25); }
+  50%       { box-shadow: 0 0 0 6px rgba(184, 92, 26, 0); }
+}
+.badge-urgent {
+  animation: softPulse 2.8s ease infinite;
+}
+
+/* ---------- TIMELINE DOT SCALE-IN ---------- */
+.timeline-dot {
+  transform: scale(0);
+  transition: transform 0.4s ease;
+}
+.reveal.in-view .timeline-dot {
+  transform: scale(1);
+  transition-delay: 0.3s;
+}
+
+/* ---------- TABLE ROW HOVER ---------- */
+.table-scroll tbody tr {
+  transition: background 0.18s ease;
+}
+.table-scroll tbody tr:hover {
+  background: #f4f3fb;
+}

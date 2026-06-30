@@ -1,0 +1,649 @@
+/* =========================================================
+   contact.css  —  FULLY FIXED VERSION
+   Page-specific styles for the Contact Us page
+   ========================================================= */
+
+/* ---------- HERO SECTION ---------- */
+.contact-hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #0a1f3f; /* fallback so it never looks "blank" if image fails */
+  background: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.65)),
+    url('../contact.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 80px 20px 60px;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* hero-inner centres and constrains content */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* School name tagline above the heading */
+.hero-tagline {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 18px;
+}
+
+.contact-hero h1,
+.hero-title {
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.contact-hero p,
+.hero-subtitle {
+  max-width: 600px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 auto 36px;
+}
+
+/* Container to stack the buttons vertically */
+.hero-btn-group {
+  display: flex;
+  flex-direction: column; /* Changed from row to column to stack them */
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px; /* Constrains the width so they aren't too wide on desktop */
+  margin: 0 auto;
+}
+
+/* Primary Button - Navy Background, White Text */
+.btn-hero-navy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Makes button span full width of container */
+  gap: 8px;
+  background: #0a1f3f; /* Navy background */
+  color: #fff; /* White text */
+  border: 2px solid #0a1f3f;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-hero-navy:hover {
+  background: #1a3a6e;
+  border-color: #1a3a6e;
+  transform: translateY(-2px);
+}
+
+/* Secondary Button - White Background, Navy Border & Text */
+.btn-hero-outline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Makes button span full width of container */
+  gap: 8px;
+  background: #fff; /* Solid white background */
+  color: #0a1f3f; /* Navy text */
+  border: 2px solid #0a1f3f; /* Navy outline */
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-hero-outline:hover {
+  background: #f0f4f8;
+  transform: translateY(-2px);
+}
+
+
+/* ---------- PAGE LAYOUT ---------- */
+.contact-section {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  gap: 40px;
+  padding: 60px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* ---------- CONTACT DETAILS CARD ---------- */
+.details-card {
+  background: #E7E8E9;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+  width: 100%;
+}
+.details-card h2 {
+  font-size: 22px;
+  color: #0a1f3f;
+  margin-bottom: 24px;
+}
+.detail-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+.detail-item:last-child { margin-bottom: 0; }
+
+.detail-ico {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a1f3f;
+  font-size: 16px;
+}
+.detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #6b7280;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.detail-value {
+  font-size: 14px;
+  color: #0a1f3f;
+  line-height: 1.55;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Tappable detail links (phone / email) — same look as plain text,
+   but with a clear hover/active cue so users know they're interactive */
+.detail-value .detail-link,
+a.detail-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.detail-value .detail-link:hover,
+a.detail-link:hover,
+.detail-value .detail-link:focus-visible,
+a.detail-link:focus-visible {
+  color: var(--primary-dark, #0a1f3f);
+  border-bottom-color: var(--accent-gold, #f0c040);
+}
+.detail-value .detail-link:active,
+a.detail-link:active {
+  opacity: 0.75;
+}
+
+/* ---------- SCHOOL TIMINGS CARD ---------- */
+.timings-card {
+  background: var(--primary-dark, #0a1f3f);
+  color: #fff;
+  border-radius: 14px;
+  padding: 32px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.timings-card h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.timing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  
+  /* FIXED: Set defaults to visible so they aren't hidden on load */
+  opacity: 1; 
+  transform: translateX(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.timing-row:first-of-type { border-top: none; padding-top: 0; }
+.timing-row span:last-child { 
+  font-weight: 300; 
+  color: #FCD44C; /* Changed from var(--accent-gold, #f0c040) */
+}
+
+
+/* ---------- FOLLOW US CARD ---------- */
+.follow-card {
+  background: var(--white, #fff);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  width: 100%;
+}
+.follow-card h4 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.social-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.social-row a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f0f4f8;
+  color: var(--primary-dark, #0a1f3f);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.social-row a:hover {
+  transform: translateY(-3px);
+  background: var(--primary-dark, #0a1f3f);
+  color: #fff;
+}
+
+/* ---------- ENQUIRY FORM CARD ---------- */
+.form-card {
+  background: var(--white, #fff);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  min-width: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+.form-card h2 {
+  font-size: 28px;
+  color: var(--primary-dark, #0a1f3f);
+  margin-bottom: 12px;
+}
+.form-card .lead {
+  font-size: 15px;
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+.form-full-width { grid-column: 1 / -1; }
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--primary-dark, #0a1f3f);
+  display: block;
+  margin-bottom: 8px;
+}
+.input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input-group-text {
+  background: var(--bg-page, #f8f9fb);
+  border: 1px solid #e2e2ea;
+  border-right: none;
+  color: var(--primary-dark, #0a1f3f);
+  border-radius: 8px 0 0 8px;
+  width: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.form-control, .form-select {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #e2e2ea;
+  border-radius: 0 8px 8px 0;
+  background-color: var(--bg-page, #f8f9fb);
+  font-size: 14.5px;
+  color: var(--text-dark, #1a1a2e);
+  font-family: var(--font-body, inherit);
+  width: 100%;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+.form-select {
+  padding-right: 42px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%230a1f3f' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+  appearance: none;
+}
+.form-control:focus, .form-select:focus {
+  background-color: #fff;
+  border-color: var(--primary-dark, #0a1f3f);
+}
+textarea.form-control {
+  min-height: 130px;
+  resize: vertical;
+}
+.input-group:focus-within .input-group-text {
+  border-color: var(--primary-dark, #0a1f3f);
+  background: #f0f4f8;
+}
+
+.req { color: #dc2626; font-weight: 700; }
+.opt { color: var(--text-muted, #6b7280); font-weight: 500; font-size: 11px; text-transform: none; letter-spacing: 0; }
+
+/* Validation States */
+.form-control.is-invalid, .form-select.is-invalid {
+  border-color: #dc2626 !important;
+  background: #fef2f2;
+}
+.input-group:has(.is-invalid) .input-group-text {
+  border-color: #dc2626;
+  color: #dc2626;
+  background: #fef2f2;
+}
+.error-text {
+  display: none;
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Success Message */
+.success-box {
+  display: none;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  padding: 24px;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.success-box.show { display: flex; }
+.icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; flex-shrink: 0; }
+.icon-lg { width: 28px; height: 28px; }
+.success-box i, .success-box .icon { color: var(--green-text, #059669); font-size: 28px; margin-top: 2px; }
+.success-box strong { display: block; color: var(--primary-dark, #0a1f3f); font-size: 16px; margin-bottom: 4px; font-weight: 600; }
+.success-box p { color: var(--text-muted, #6b7280); font-size: 14px; margin-bottom: 12px; line-height: 1.5; }
+.link-reset-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary-dark, #0a1f3f);
+  font-weight: 600;
+  font-size: 13.5px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background: var(--primary-dark, #0a1f3f);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s ease;
+}
+.submit-btn:hover { background: var(--primary-light, #1a3a6e); }
+
+/* ---------- MAP SECTION ---------- */
+.map-section {
+  position: relative;
+  margin-bottom: 80px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.map-frame { width: 100%; height: 500px; border: none; display: block; }
+.map-mask-mobile { display: none; } /* only shown on mobile, see media query */
+.map-overlay-wrap {
+  position: absolute;
+  left: 20px;
+  bottom: 40px;
+  max-width: 360px;
+  z-index: 5;
+}
+.map-overlay {
+  background: #fff;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+.map-overlay h3 { font-size: 22px; color: var(--primary-dark, #0a1f3f); margin-bottom: 12px; }
+.map-overlay p { font-size: 14px; color: var(--text-muted, #6b7280); line-height: 1.6; margin-bottom: 24px; }
+.map-directions-btn {
+  background: var(--primary-dark, #0a1f3f);
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.map-directions-btn:hover { background: var(--primary-light, #1a3a6e); }
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+/* ---------- HERO ENTRANCE ANIMATIONS ---------- */
+@keyframes heroFadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-tagline {
+  animation: heroFadeDown 0.7s ease both;
+  animation-delay: 0.1s;
+}
+.hero-title {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.3s;
+}
+.hero-subtitle {
+  animation: heroFadeUp 0.7s ease both;
+  animation-delay: 0.5s;
+}
+.hero-btn-group {
+  animation: heroFadeIn 0.7s ease both;
+  animation-delay: 0.75s;
+}
+
+/* ---------- SCROLL REVEAL (fade-up) ---------- */
+.fade-up {
+  /* FIXED: Form visible by default without JS */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition-delay: var(--delay, 0ms);
+}
+
+/* Sidebar close button */
+.sidebar-close {
+  display: none;
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--primary-dark, #0a1f3f);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+  z-index: 1001;
+  line-height: 1;
+}
+
+/* FIXED: Show class for the close button */
+.sidebar-close.show {
+  display: flex;
+}
+
+.sidebar-close:hover {
+  background: var(--primary-dark, #0a1f3f);
+  color: #fff;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .map-overlay-wrap {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    max-width: 100%;
+    margin-top: -40px; /* RESTORED: overlapping card look, requested */
+    padding: 0 20px;
+    z-index: 2;
+  }
+  /* Solid white shelf that sits behind the card, covering the strip of
+     the map where Google's own fullscreen/Street-View controls live.
+     Same white as the card, so nothing peeks out past the rounded corners. */
+  .map-mask-mobile {
+    display: block;
+    position: absolute;
+    top: 440px; /* map-frame is 500px tall; covers the bottom 60px control strip */
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--white, #fff);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 650px) {
+  .contact-hero {
+    padding: 70px 16px 50px;
+    min-height: 420px;
+  }
+  .contact-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-card { padding: 24px; }
+  .submit-btn { width: 100%; }
+  .hero-btn-group { gap: 12px; flex-wrap: nowrap; }
+  .btn-hero-navy,
+  .btn-hero-outline { padding: 13px 20px; font-size: 14px; }
+}
+
+@media (max-width: 360px) {
+  .contact-hero h1,
+  .hero-title  { font-size: 28px; }
+  .contact-hero p,
+  .hero-subtitle { font-size: 13.5px; }
+  .hero-btn-group { flex-direction: column; gap: 10px; }
+  .btn-hero-navy,
+  .btn-hero-outline { width: 100%; justify-content: center; }
+
+  .form-card  { padding: 16px; }
+  .form-grid  { grid-template-columns: 1fr; gap: 16px; }
+  .form-control, .form-select { font-size: 13.5px; padding: 12px; }
+  .input-group-text { width: 40px; min-width: 40px; }
+  .submit-btn { width: 100%; font-size: 14px; padding: 14px; }
+
+  .details-card  { padding: 20px; }
+  .timings-card  { padding: 20px; }
+  .timing-row    { font-size: 12.5px; }
+
+  .map-overlay   { padding: 20px; }
+  .map-overlay h3 { font-size: 18px; }
+}

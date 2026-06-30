@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaitanya Bharath School - Facilities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/facilities.css">
+</head>
+<body>
+
+
+  <header class="header">
+    <div class="container">
+        <a href="index.html" class="logo-area">
+            <img src="logo1.jpg" alt="CBS Logo" class="logo-image-fixed">
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="academics.html">Academics</a>
+          <a href="facilities.html" class="active">Facilities</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="faculty.html">Faculty</a>
+          <a href="announcement.html">Announcements</a>
+            <a href="contact.html" class="nav-cta nav-cta-mobile">Enquire Now</a>  <!-- ADD THIS LINE -->
+
+        </nav>
+
+        <a href="contact.html" class="nav-cta nav-cta-desktop">Enquire Now</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+
+
+  <!-- HERO: eyebrow, h1, hero-quote animate via CSS keyframes (no fade-up class needed) -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="eyebrow">Why Parents Choose Us</div>
+          <h1 class="section-title" style="font-size: 76px; letter-spacing: -2px;">A Better Place<br>for Learning</h1>
+        </div>
+        <div class="hero-spacer"></div>
+        <div class="hero-quote">
+          Quality education with modern teaching methods, strong values, and personal attention for every student.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-banner">
+      <div class="hero-banner-inner">
+        <img src="smartclassroom.jpg" alt="Smart classroom">
+        <div class="hero-banner-overlay">
+          <h3>Smart Classrooms &amp; Digital Learning</h3>
+          <p>A place where children learn with confidence, discover their talents, and build skills for life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNICATION: fade-up on text block and image only, NOT on child .comm-feature (FIX #4) -->
+  <section class="comm-section">
+    <div class="container">
+      <div class="comm-content">
+        <div class="comm-text fade-up">
+          <div class="comm-sparkle">✦</div>
+          <h2 class="section-title" style="font-size: 27px;">Communication &amp; Personality Development</h2>
+          <p class="section-subtitle">Building confident communicators and future leaders through structured skill enhancement programs.</p>
+          <div class="comm-feature">
+            <span class="check">✓</span>
+            <p><strong>Personality Development:</strong> Programs focused on building confidence, teamwork, social skills, and self-expression</p>
+          </div>
+          <div class="comm-feature">
+            <span class="check">✓</span>
+            <p><strong>Leadership Programs:</strong> Encouraging responsibility, decision-making, leadership qualities, and critical thinking skills.</p>
+          </div>
+        </div>
+        <div class="comm-image fade-up" data-delay="2">
+          <img src="presentation.jpg" alt="Personality development classroom">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENTIAL: staggered bento cards -->
+  <section class="bg-alt">
+    <div class="container">
+      <div class="section-head fade-up">
+        <h2 class="section-title">Experiential &amp; Activity-Based Learning</h2>
+        <p class="section-subtitle" style="margin: 0 auto; font-style: italic;">Nurturing creativity, curiosity, and practical knowledge<br>through hands-on learning experiences.</p>
+      </div>
+
+      <div class="bento">
+        <div class="bento-card card-tall fade-up" data-delay="1">
+          <div class="img-wrap">
+            <img src="facility.jpg" alt="Concept based learning">
+          </div>
+          <div class="card-body">
+            <div>
+              <h3>Concept-Based Learning</h3>
+              <p>Helping students understand concepts through interactive and activity-based learning methods.</p>
+            </div>
+            <span class="card-icon">📖</span>
+          </div>
+        </div>
+
+        <div class="bento-right">
+          <div class="split-card light fade-up" data-delay="2">
+            <div class="text-side">
+              <h3>Abacus &amp; Brain Development</h3>
+              <p>Improving concentration, memory, mental calculation, and thinking skills.</p>
+            </div>
+            <div class="img-side">
+              <img src="brain.jpg" alt="Abacus class">
+            </div>
+          </div>
+
+          <div class="split-card dark fade-up" data-delay="3">
+            <div class="text-side">
+              <h3>Field Trips &amp; Excursions</h3>
+              <p>Providing practical learning experiences through educational visits and tours.</p>
+            </div>
+            <div class="img-side">
+              <img src="trip.jpg" alt="Field trip">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORTS: image left, text right -->
+  <section class="sports-section">
+    <div class="container">
+      <div class="sports-content">
+        <div class="sports-image fade-up" data-delay="1">
+          <img src="track.jpg" alt="Running track">
+        </div>
+        <div class="sports-text fade-up" data-delay="2">
+          <span class="tagline">Athletic Excellence</span>
+          <h2 class="section-title" style="font-size: 28px; margin-bottom: 34px;">Sports, Yoga &amp; Wellness</h2>
+          <div class="sports-feature">
+            <div class="icon-circle">⚽</div>
+            <div>
+              <h4>Sports Training</h4>
+              <p>Developing physical fitness, teamwork, discipline, and sportsmanship through regular sports activities.</p>
+            </div>
+          </div>
+          <div class="sports-feature">
+            <div class="icon-circle">🧘</div>
+            <div>
+              <h4>Yoga &amp; Meditation</h4>
+              <p>Promoting focus, relaxation, and healthy living.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: FIX #6 padding-top:0 kept; FIX button bg so text shows -->
+  <section style="padding-top: 0; background-color: var(--page-bg);">
+    <div class="container">
+      <div class="cta-banner fade-up">
+        <h2>Experience it in person</h2>
+        <p>We invite you to tour our world-class facilities and witness the future of education firsthand.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn" style="background: var(--accent-yellow); border: 2px solid var(--accent-yellow); color: var(--primary-dark); font-weight: 700;">Book a Campus Tour</a>
+          <a href="faculty.html" class="btn" style="background: transparent; border: 2px solid rgba(255,255,255,0.45); color: var(--white); font-weight: 600;">View Faculty</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">Chaitanya Bharath<br>School</div>
+<p class="footer-desc">
+A warm, caring place where children from nursery to grade 7 learn, play and grow with confidence.
+</p>
+
+<div class="social-icons">
+<a href="#" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/chaitanyabharathschool?igsh=MTQ3Y3hmZDNmdnh4Mg==" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/917416709883" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+</div>
+            </div>
+            <div>
+                <h4>Quick links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="academics.html">About us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="contact.html">Admissions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>School info</h4>
+                <ul class="footer-links">
+                    <li><a href="announcement.html">Notice board</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="faculty.html">Faculty</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Visit us</h4>
+                <div class="visit-card">
+                    <div class="visit-item"><i class="fa-solid fa-location-dot"></i><span>8-2-124, Gandhinagar, Sircilla - 505301</span></div>
+                    <div class="visit-item"><i class="fa-solid fa-phone"></i><span>+91 7416709883</span></div>
+                    <div class="visit-item"><i class="fa-regular fa-clock"></i><span>Mon-Sat, 8:30 AM - 4:30 PM</span></div>
+                    <a href="#" class="btn-directions">Get directions</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chaitanya Bharath School. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy policy</a>
+                <a href="#">Terms of service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/facilities.js"></script>
+
+
+</body>
+</html>
