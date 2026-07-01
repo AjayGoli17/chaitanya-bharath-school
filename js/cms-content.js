@@ -92,7 +92,7 @@ async function renderAnnouncements() {
           ? `<span class="badge badge-urgent">Urgent</span>`
           : "";
       return `
-        <div class="ann-card reveal" style="--reveal-delay: ${i * 0.1}s;">
+        <div class="ann-card">
           <div class="ann-top">
             ${urgentBadge}
             <span class="ann-date">${formatDate(entry.data.date)}</span>
@@ -122,7 +122,7 @@ async function renderExamSchedules() {
         ? `<a class="icon-btn" href="${entry.data.pdf}" target="_blank" rel="noopener" title="Download PDF">↓</a>`
         : "";
       return `
-        <div class="exam-card light reveal" style="--reveal-delay: ${i * 0.1}s;">
+        <div class="exam-card light">
           <span class="exam-tag upcoming">${entry.data.class || "ALL CLASSES"}</span>
           <h3>${entry.data.title || "Untitled"}</h3>
           <p>${entry.data.description || ""}</p>
@@ -151,7 +151,7 @@ async function renderEvents() {
   container.innerHTML = entries
     .map(
       (entry, i) => `
-      <div class="timeline-item reveal" style="--reveal-delay: ${i * 0.15}s;">
+      <div class="timeline-item">
         <span class="timeline-dot"></span>
         <div class="timeline-date">${formatDate(entry.data.date, { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()}</div>
         <h4>${entry.data.title || "Untitled"}</h4>
