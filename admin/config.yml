@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 media_folder: "public/uploads"
-public_folder: "/uploads"
+public_folder: "/public/uploads"
 collections:
   - name: "announcements"
     label: "Announcements"
