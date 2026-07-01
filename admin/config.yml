@@ -1,30 +1,34 @@
 backend:
   name: git-gateway
   branch: main
-
 media_folder: "public/uploads"
 public_folder: "/uploads"
-
 collections:
   - name: "announcements"
     label: "Announcements"
     folder: "content/announcements"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
-
   - name: "exam_schedules"
     label: "Examination Schedules"
     folder: "content/exam-schedules"
     create: true
-
     fields:
       - { label: "Exam Title", name: "title", widget: "string" }
       - { label: "Class", name: "class", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Upload PDF", name: "pdf", widget: "file" }
+  - name: "events"
+    label: "Upcoming Events"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
