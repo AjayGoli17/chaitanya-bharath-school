@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBS Logo Animation Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* =========================================
+           CUSTOM KEYFRAME ANIMATIONS
+           ========================================= */
+
+        /* 1. Fade & Scale */
+        @keyframes fadeScale {
+            0% { opacity: 0; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-scale {
+            animation: fadeScale 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* 2. Shine Sweep */
+        @keyframes shine {
+            0% { left: -150%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 150%; opacity: 0; }
+        }
+        .animate-shine {
+            animation: shine 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* 3. Bounce Drop */
+        @keyframes bounceDrop {
+            0% { opacity: 0; transform: translateY(-100px) scale(0.9); }
+            50% { opacity: 1; transform: translateY(15px) scale(1.02); }
+            75% { transform: translateY(-10px) scale(0.98); }
+            100% { transform: translateY(0) scale(1); }
+        }
+        .animate-bounce-drop {
+            animation: bounceDrop 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+        }
+
+        /* 4. Multi-Stage Reveal (Custom for CBS Logo) */
+        
+        /* Layer 1: The Gear (Drops in from top) */
+        @keyframes dropGear {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .clip-gear {
+            clip-path: inset(0 0 52% 0); /* Cuts off bottom half */
+            animation: dropGear 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* Layer 2: The Flame & Book (Fades and grows from center) */
+        @keyframes popMiddle {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .clip-middle {
+            clip-path: inset(48% 0 24% 0); /* Keeps only middle */
+            opacity: 0; /* Hide initially */
+            animation: popMiddle 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.5s; /* Wait for gear */
+        }
+
+        /* Layer 3: Text "CBS" (Slides up from bottom) */
+        @keyframes slideTextUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .clip-text {
+            clip-path: inset(74% 0 0 0); /* Keeps only text area */
+            opacity: 0; /* Hide initially */
+            animation: slideTextUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 1.0s; /* Wait for middle */
+        }
+
+        /* Preloader Overlay Exit */
+        .fade-out-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans h-screen overflow-hidden">
+
+    <!-- FULL SCREEN PRELOADER OVERLAY -->
+    <div id="loader-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-700">
+        <!-- Logo Container injected via JavaScript -->
+        <div id="logo-container" class="relative w-64 h-64 flex items-center justify-center">
+            <!-- Initial state: Fade + Scale -->
+            <img src="" class="w-full h-auto animate-fade-scale" alt="CBS Logo" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-red-500 text-center\'><strong>Error:</strong><br>logo1.png not found.<br>Please ensure it is in the same folder.</div>';" />
+        </div>
+    </div>
+
+    <!-- MOCK SCHOOL HOMEPAGE (Visible after loading) -->
+    <div class="h-full flex flex-col relative z-10">
+        <!-- Header -->
+        <header class="bg-blue-900 text-white py-4 px-8 shadow-md flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="logo1.png" alt="Logo" class="h-12 w-auto bg-white rounded-md p-1">
+                <h1 class="text-xl font-bold tracking-wide">Chaitanya Bharath School</h1>
+            </div>
+            <nav class="hidden md:flex gap-6 font-medium">
+                <a href="#" class="hover:text-blue-300 transition">Home</a>
+                <a href="#" class="hover:text-blue-300 transition">Admissions</a>
+                <a href="#" class="hover:text-blue-300 transition">Academics</a>
+                <a href="#" class="hover:text-blue-300 transition">Campus Life</a>
+            </nav>
+        </header>
+
+        <!-- Main Content Area with Controls -->
+        <main class="flex-grow flex flex-col items-center justify-center p-8 text-center bg-gray-50">
+            
+            <div class="max-w-2xl bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h2 class="text-3xl font-extrabold text-blue-900 mb-4">Test Loading Animations</h2>
+                <p class="text-gray-600 mb-8">Click the buttons below to trigger different preloader sequences using your custom logo.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <button onclick="playAnimation('fade-scale')" class="flex flex-col items-center justify-center p-4 bg-blue-50 border-2 border-blue-200 rounded-xl hover:bg-blue-100 hover:border-blue-400 transition group">
+                        <span class="font-bold text-blue-900 text-lg group-hover:scale-105 transition">1. Fade + Scale</span>
+                        <span class="text-sm text-gray-500 mt-1">Clean, elegant, standard</span>
+                    </button>
+
+                    <button onclick="playAnimation('multi-stage')" class="flex flex-col items-center justify-center p-4 bg-indigo-50 border-2 border-indigo-200 rounded-xl hover:bg-indigo-100 hover:border-indigo-400 transition group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-bl-lg">RECOMMENDED</div>
+                        <span class="font-bold text-indigo-900 text-lg group-hover:scale-105 transition">2. Multi-Stage Reveal</span>
+                        <span class="text-sm text-gray-500 mt-1">Staggered logo assembly</span>
+                    </button>
+
+                    <button onclick="playAnimation('shine')" class="flex flex-col items-center justify-center p-4 bg-purple-50 border-2 border-purple-200 rounded-xl hover:bg-purple-100 hover:border-purple-400 transition group">
+                        <span class="font-bold text-purple-900 text-lg group-hover:scale-105 transition">3. Premium Shine</span>
+                        <span class="text-sm text-gray-500 mt-1">Light sweep across logo</span>
+                    </button>
+
+                    <button onclick="playAnimation('bounce')" class="flex flex-col items-center justify-center p-4 bg-green-50 border-2 border-green-200 rounded-xl hover:bg-green-100 hover:border-green-400 transition group">
+                        <span class="font-bold text-green-900 text-lg group-hover:scale-105 transition">4. Bounce Drop</span>
+                        <span class="text-sm text-gray-500 mt-1">Friendly and energetic</span>
+                    </button>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Start the initial animation on page load
+        window.onload = () => {
+            setTimeout(() => hideOverlay(), 2000);
+        };
+
+        const overlay = document.getElementById('loader-overlay');
+        const logoContainer = document.getElementById('logo-container');
+        let hideTimeout;
+
+        function playAnimation(type) {
+            // 1. Reset the overlay visibility immediately
+            clearTimeout(hideTimeout);
+            overlay.classList.remove('fade-out-overlay');
+            overlay.style.opacity = '1';
+            
+            // 2. Clear out the old logo HTML to force animation restart
+            logoContainer.innerHTML = '';
+
+            // 3. Inject the requested animation HTML
+            let newHTML = '';
+
+            if (type === 'fade-scale') {
+                newHTML = `<img src="logo1.png" class="w-full h-auto animate-fade-scale" alt="CBS Logo" />`;
+                hideTimeout = setTimeout(hideOverlay, 2000);
+            } 
+            
+            else if (type === 'shine') {
+                newHTML = `
+                    <div class="relative w-full h-auto overflow-hidden animate-fade-scale">
+                        <img src="logo1.png" class="w-full h-auto" alt="CBS Logo" />
+                        <div class="absolute top-0 w-[40%] h-full bg-white/60 skew-x-[-25deg] animate-shine blur-sm"></div>
+                    </div>`;
+                hideTimeout = setTimeout(hideOverlay, 2500);
+            } 
+            
+            else if (type === 'bounce') {
+                newHTML = `<img src="logo1.png" class="w-full h-auto animate-bounce-drop" alt="CBS Logo" />`;
+                hideTimeout = setTimeout(hideOverlay, 2000);
+            } 
+            
+            else if (type === 'multi-stage') {
+                // This uses absolute positioning and CSS clip-paths to slice the image and reveal parts sequentially
+                newHTML = `
+                    <div class="relative w-full h-full">
+                        <!-- Bottom Layer: Text -->
+                        <img src="logo1.png" class="absolute inset-0 w-full h-auto clip-text" alt="CBS Text" />
+                        <!-- Middle Layer: Book & Flame -->
+                        <img src="logo1.png" class="absolute inset-0 w-full h-auto clip-middle" alt="CBS Flame" />
+                        <!-- Top Layer: Gear -->
+                        <img src="logo1.png" class="absolute inset-0 w-full h-auto clip-gear" alt="CBS Gear" />
+                    </div>`;
+                hideTimeout = setTimeout(hideOverlay, 3200); // Give multi-stage extra time to finish
+            }
+
+            // Force a DOM reflow before adding HTML to ensure animations trigger correctly
+            void overlay.offsetWidth;
+            logoContainer.innerHTML = newHTML;
+        }
+
+        function hideOverlay() {
+            overlay.classList.add('fade-out-overlay');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+--- a/index.html
++++ b/index.html
+@@ -12,8 +12,61 @@
+     
+     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="css/homepage.css">
++
++    <!-- Page loading animation -->
++    <style>
++      :root{
++        --loader-navy:#1f2f6e;
++      }
++      html.is-loading{ overflow:hidden; }
++      #pageLoader{
++        position:fixed;
++        inset:0;
++        z-index:9999;
++        height:100vh;
++        display:flex;
++        flex-direction:column;
++        align-items:center;
++        justify-content:center;
++        background:#ffffff;
++        transition:opacity 0.5s ease, visibility 0.5s ease;
++      }
++      #pageLoader img{
++        width:110px;
++      }
++      #pageLoader .track{
++        width:220px;
++        height:6px;
++        background:#eef0f8;
++        border-radius:6px;
++        overflow:hidden;
++        margin-top:22px;
++      }
++      #pageLoader .bar{
++        height:100%;
++        width:0%;
++        border-radius:6px;
++        background:var(--loader-navy);
++        animation: barFill 2.2s ease-in-out infinite;
++      }
++      @keyframes barFill{
++        0%{ width:0%; }
++        90%{ width:100%; }
++        100%{ width:100%; }
++      }
++      #pageLoader.loader-hidden{
++        opacity:0;
++        visibility:hidden;
++        pointer-events:none;
++      }
++    </style>
+ </head>
+-<body>
++<body class="is-loading">
++
++    <div id="pageLoader">
++        <img src="logo1.png" alt="CBS Logo">
++        <div class="track"><div class="bar"></div></div>
++    </div>
+ 
+     <header class="header">
+         <div class="container">
+@@ -483,5 +536,18 @@
+ 
+ 
+     <script src="js/homepage.js"></script>
++
++    <script>
++      window.addEventListener('load', function () {
++        var loader = document.getElementById('pageLoader');
++        document.documentElement.classList.remove('is-loading');
++        if (loader) {
++          loader.classList.add('loader-hidden');
++          loader.addEventListener('transitionend', function () {
++            loader.remove();
++          }, { once: true });
++        }
++      });
++    </script>
+ </body>
+ </html>
+\ No newline at end of file

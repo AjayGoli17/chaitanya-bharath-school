@@ -1,0 +1,184 @@
+From 681c978bee5605875dde0e409f89a20a77974d4b Mon Sep 17 00:00:00 2001
+From: cbs <a@a.com>
+Date: Fri, 10 Jul 2026 18:47:11 +0000
+Subject: [PATCH] Replace inline page loader with external css/loader.css +
+ js/loader.js
+
+---
+ css/loader.css | 56 +++++++++++++++++++++++++++++++++++++++++++
+ index.html     | 65 ++++----------------------------------------------
+ js/loader.js   | 15 ++++++++++++
+ 3 files changed, 76 insertions(+), 60 deletions(-)
+ create mode 100644 css/loader.css
+ create mode 100644 js/loader.js
+
+diff --git a/css/loader.css b/css/loader.css
+new file mode 100644
+index 0000000..12f5aa9
+--- /dev/null
++++ b/css/loader.css
+@@ -0,0 +1,56 @@
++/* ============================================
++   CBS Page Loading Animation
++   ============================================ */
++:root{
++  --loader-navy:#1f2f6e;
++}
++
++body.is-loading{
++  overflow:hidden;
++}
++
++.loader{
++  position:fixed;
++  inset:0;
++  z-index:9999;
++  height:100vh;
++  display:flex;
++  flex-direction:column;
++  align-items:center;
++  justify-content:center;
++  background:#ffffff;
++  transition:opacity 0.5s ease, visibility 0.5s ease;
++}
++
++.loader img{
++  width:110px;
++}
++
++.loader .track{
++  width:220px;
++  height:6px;
++  background:#eef0f8;
++  border-radius:6px;
++  overflow:hidden;
++  margin-top:22px;
++}
++
++.loader .bar{
++  height:100%;
++  width:0%;
++  border-radius:6px;
++  background:var(--loader-navy);
++  animation: barFill 2.2s ease-in-out infinite;
++}
++
++@keyframes barFill{
++  0%{ width:0%; }
++  90%{ width:100%; }
++  100%{ width:100%; }
++}
++
++.loader.loader-hidden{
++  opacity:0;
++  visibility:hidden;
++  pointer-events:none;
++}
+diff --git a/index.html b/index.html
+index d2d8ff0..b87e31a 100644
+--- a/index.html
++++ b/index.html
+@@ -12,56 +12,11 @@
+ <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="css/homepage.css">
+ <!-- Page loading animation -->
+-<style>
+-:root{
+---loader-navy:#1f2f6e;
+-}
+-html.is-loading{ overflow:hidden; }
+-#pageLoader{
+-position:fixed;
+-inset:0;
+-z-index:9999;
+-height:100vh;
+-display:flex;
+-flex-direction:column;
+-align-items:center;
+-justify-content:center;
+-background:#ffffff;
+-transition:opacity 0.5s ease, visibility 0.5s ease;
+-}
+-#pageLoader img{
+-width:110px;
+-}
+-#pageLoader .track{
+-width:220px;
+-height:6px;
+-background:#eef0f8;
+-border-radius:6px;
+-overflow:hidden;
+-margin-top:22px;
+-}
+-#pageLoader .bar{
+-height:100%;
+-width:0%;
+-border-radius:6px;
+-background:var(--loader-navy);
+-animation: barFill 2.2s ease-in-out infinite;
+-}
+-@keyframes barFill{
+-0%{ width:0%; }
+-90%{ width:100%; }
+-100%{ width:100%; }
+-}
+-#pageLoader.loader-hidden{
+-opacity:0;
+-visibility:hidden;
+-pointer-events:none;
+-}
+-</style>
++<link rel="stylesheet" href="css/loader.css">
+ </head>
+ <body class="is-loading">
+-<div id="pageLoader">
+-<img src="logo1.png" alt="CBS Logo">
++<div class="loader" id="pageLoader">
++<img src="logo1.jpg" alt="CBS Logo">
+ <div class="track"><div class="bar"></div></div>
+ </div>
+ <header class="header">
+@@ -485,17 +440,7 @@ A warm, caring place where children from nursery to grade 7 learn, play and grow
+ </footer>
+ <script src="js/main.js"></script>
+ <script src="js/homepage.js"></script>
+-<script>
+-window.addEventListener('load', function () {
+-var loader = document.getElementById('pageLoader');
+-document.documentElement.classList.remove('is-loading');
+-if (loader) {
+-loader.classList.add('loader-hidden');
+-loader.addEventListener('transitionend', function () {
+-loader.remove();
+-}, { once: true });
+-}
+-});
+-</script>
++<!-- Page loading animation -->
++<script src="js/loader.js"></script>
+ </body>
+ </html>
+diff --git a/js/loader.js b/js/loader.js
+new file mode 100644
+index 0000000..188ceb0
+--- /dev/null
++++ b/js/loader.js
+@@ -0,0 +1,15 @@
++/* ============================================
++   CBS Page Loading Animation
++   Hides the loader once the page has fully loaded
++   ============================================ */
++window.addEventListener('load', function () {
++  var loader = document.getElementById('pageLoader');
++  document.body.classList.remove('is-loading');
++
++  if (loader) {
++    loader.classList.add('loader-hidden');
++    loader.addEventListener('transitionend', function () {
++      loader.remove();
++    }, { once: true });
++  }
++});
+-- 
+2.43.0
+
