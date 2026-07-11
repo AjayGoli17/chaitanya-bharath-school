@@ -350,7 +350,6 @@ body {
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1024px) {
-    .leader-grid  { grid-template-columns: repeat(2, 1fr); }
     .teacher-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -400,9 +399,18 @@ body {
     .filter-tabs { gap: 6px; }
     .filter-tabs button { font-size: 12px; padding: 8px 14px; }
 
-    .leader-grid,
+    .leader-grid { gap: 6px; }
     .teacher-grid { gap: 10px; }
 
-    .leader-card img,
+    .leader-card img { height: 70px; }
     .teacher-card img { height: 110px; }
+
+    .leader-info { padding: 6px 4px 8px; }
+    .leader-info h3 { font-size: 10.5px; }
+    .leader-role { font-size: 7.5px; margin-bottom: 3px; }
+    .leader-edu { font-size: 8.5px; }
+
+    section.container,
+    .hero.container,
+    .leadership.container { padding-left: 10px; padding-right: 10px; }
 }
