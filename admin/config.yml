@@ -65,17 +65,51 @@ collections:
     label: "Gallery Page"
     files:
       - name: "gallery"
-        label: "Gallery Images"
+        label: "Gallery Content"
         file: "content/gallery.json"
         fields:
-          - label: "Images"
-            name: "images"
+          - label: "Academics Photos"
+            name: "academics"
             widget: "list"
-            summary: "{{caption}} — {{category}}"
+            summary: "{{caption}}"
             fields:
-              - label: "Tab"
-                name: "category"
-                widget: "select"
-                options: ["Academics", "Sports", "Events", "Trips", "Celebrations"]
-              - { label: "Caption", name: "caption", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Sports Photos"
+            name: "sports"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Events Photos"
+            name: "events"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Trips Photos"
+            name: "trips"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Celebrations Photos"
+            name: "celebrations"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Videos"
+            name: "videos"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Video File", name: "video", widget: "file" }
+              - { label: "Poster Image", name: "poster", widget: "image" }
+              - { label: "Featured Video?", name: "featured", widget: "boolean", default: false, hint: "Only one video should be marked featured — it displays large at the top." }

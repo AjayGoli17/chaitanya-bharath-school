@@ -1,32 +1,73 @@
 {
-  "images": [
-    { "category": "Academics", "caption": "Science Lab", "image": "tabs/academics1.jpg" },
-    { "category": "Academics", "caption": "Classroom Learning", "image": "tabs/academics2.jpg" },
-    { "category": "Academics", "caption": "Art Class", "image": "tabs/academics3.jpg" },
-    { "category": "Academics", "caption": "Group Study", "image": "tabs/academics5.jpg" },
-
-    { "category": "Sports", "caption": "Basketball", "image": "tabs/sports1.jpg" },
-    { "category": "Sports", "caption": "Football Match", "image": "tabs/sports3.jpg" },
-    { "category": "Sports", "caption": "Athletics Race", "image": "tabs/sports4.jpg" },
-    { "category": "Sports", "caption": "Cricket Practice", "image": "tabs/sports5.jpg" },
-    { "category": "Sports", "caption": "Sports Day", "image": "tabs/sports7.jpg" },
-
-    { "category": "Events", "caption": "Annual Day Event", "image": "tabs/events3.jpg" },
-    { "category": "Events", "caption": "School Assembly", "image": "tabs/events2.jpg" },
-    { "category": "Events", "caption": "Award Ceremony", "image": "tabs/events4.jpg" },
-    { "category": "Events", "caption": "Cultural Program", "image": "tabs/events6.jpg" },
-    { "category": "Events", "caption": "Parent-Teacher Meet", "image": "tabs/events8.jpg" },
-
-    { "category": "Trips", "caption": "Field Trip", "image": "tabs/trip.jpg" },
-    { "category": "Trips", "caption": "Museum Visit", "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80" },
-    { "category": "Trips", "caption": "Nature Excursion", "image": "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?w=500&q=80" },
-    { "category": "Trips", "caption": "Zoo Visit", "image": "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=500&q=80" },
-    { "category": "Trips", "caption": "Picnic Outing", "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80" },
-
-    { "category": "Celebrations", "caption": "Dance Celebration", "image": "tabs/celebration3.jpg" },
-    { "category": "Celebrations", "caption": "Festival Celebration", "image": "tabs/celebration4.jpg" },
-    { "category": "Celebrations", "caption": "Birthday Celebration", "image": "tabs/celebration5.jpg" },
-    { "category": "Celebrations", "caption": "Independence Day", "image": "tabs/celebration6.jpg" },
-    { "category": "Celebrations", "caption": "Christmas Celebration", "image": "tabs/celebrations7.jpg" }
+  "academics": [
+    { "image": "tabs/academics1.jpg", "caption": "Science Lab" },
+    { "image": "tabs/academics2.jpg", "caption": "Classroom Learning" },
+    { "image": "tabs/academics3.jpg", "caption": "Art Class" },
+    { "image": "tabs/academics5.jpg", "caption": "Group Study" }
+  ],
+  "sports": [
+    { "image": "tabs/sports1.jpg", "caption": "Basketball" },
+    { "image": "tabs/sports3.jpg", "caption": "Football Match" },
+    { "image": "tabs/sports4.jpg", "caption": "Athletics Race" },
+    { "image": "tabs/sports5.jpg", "caption": "Cricket Practice" },
+    { "image": "tabs/sports7.jpg", "caption": "Sports Day" }
+  ],
+  "events": [
+    { "image": "tabs/events3.jpg", "caption": "Annual Day Event" },
+    { "image": "tabs/events2.jpg", "caption": "School Assembly" },
+    { "image": "tabs/events4.jpg", "caption": "Award Ceremony" },
+    { "image": "tabs/events6.jpg", "caption": "Cultural Program" },
+    { "image": "tabs/events8.jpg", "caption": "Parent-Teacher Meet" }
+  ],
+  "trips": [
+    { "image": "tabs/trip.jpg", "caption": "Field Trip" },
+    { "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80", "caption": "Museum Visit" },
+    { "image": "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?w=500&q=80", "caption": "Nature Excursion" },
+    { "image": "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=500&q=80", "caption": "Zoo Visit" },
+    { "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80", "caption": "Picnic Outing" }
+  ],
+  "celebrations": [
+    { "image": "tabs/celebration3.jpg", "caption": "Dance Celebration" },
+    { "image": "tabs/celebration4.jpg", "caption": "Festival Celebration" },
+    { "image": "tabs/celebration5.jpg", "caption": "Birthday Celebration" },
+    { "image": "tabs/celebration6.jpg", "caption": "Independence Day" },
+    { "image": "tabs/celebrations7.jpg", "caption": "Christmas Celebration" }
+  ],
+  "videos": [
+    {
+      "title": "Annual Day Celebrations 2024",
+      "description": "",
+      "video": "sample.mp4",
+      "poster": "thumbnail.png",
+      "featured": true
+    },
+    {
+      "title": "Bathukamma Celebrations",
+      "description": "Relive the joyful moments of our Bathukamma celebration.",
+      "video": "annual1.mp4",
+      "poster": "annual.png",
+      "featured": false
+    },
+    {
+      "title": "Sankranthi Celebrations",
+      "description": "Enjoy the festive moments of our Sankranthi festival.",
+      "video": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "poster": "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+      "featured": false
+    },
+    {
+      "title": "Annual Sports Meet",
+      "description": "Highlights from our students' athletic events and prize distribution.",
+      "video": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "poster": "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
+      "featured": false
+    },
+    {
+      "title": "Science Exhibition",
+      "description": "Innovative projects showcased by our budding young scientists.",
+      "video": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "poster": "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+      "featured": false
+    }
   ]
 }
