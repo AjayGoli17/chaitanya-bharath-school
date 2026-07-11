@@ -1,0 +1,748 @@
+diff -ruN before/admin/config.yml after/admin/config.yml
+--- a/admin/config.yml	2026-07-11 11:16:15.896028200 +0000
++++ b/admin/config.yml	2026-07-11 11:16:24.308086027 +0000
+@@ -32,3 +32,50 @@
+       - { label: "Event Name", name: "title", widget: "string" }
+       - { label: "Date", name: "date", widget: "datetime" }
+       - { label: "Description", name: "description", widget: "text" }
++  - name: "faculty_page"
++    label: "Faculty Page"
++    files:
++      - name: "faculty"
++        label: "Faculty Members"
++        file: "content/faculty.json"
++        fields:
++          - label: "Leadership & Department Heads"
++            name: "leadership"
++            widget: "list"
++            summary: "{{name}} — {{role}}"
++            fields:
++              - { label: "Photo", name: "photo", widget: "image" }
++              - { label: "Name", name: "name", widget: "string" }
++              - { label: "Role / Title", name: "role", widget: "string" }
++              - { label: "Education", name: "education", widget: "string" }
++          - label: "Teachers"
++            name: "teachers"
++            widget: "list"
++            summary: "{{name}} — {{category}}"
++            fields:
++              - label: "Stage"
++                name: "category"
++                widget: "select"
++                options: ["Foundation", "Preparatory", "Middle"]
++              - { label: "Photo", name: "photo", widget: "image" }
++              - { label: "Name", name: "name", widget: "string" }
++              - { label: "Role / Title", name: "role", widget: "string" }
++              - { label: "Education", name: "education", widget: "string" }
++  - name: "gallery_page"
++    label: "Gallery Page"
++    files:
++      - name: "gallery"
++        label: "Gallery Images"
++        file: "content/gallery.json"
++        fields:
++          - label: "Images"
++            name: "images"
++            widget: "list"
++            summary: "{{caption}} — {{category}}"
++            fields:
++              - label: "Tab"
++                name: "category"
++                widget: "select"
++                options: ["Academics", "Sports", "Events", "Trips", "Celebrations"]
++              - { label: "Caption", name: "caption", widget: "string" }
++              - { label: "Image", name: "image", widget: "image" }
+diff -ruN before/content/faculty.json after/content/faculty.json
+--- /dev/null
++++ b/content/faculty.json	2026-07-11 11:16:49.122425635 +0000
+@@ -0,0 +1,136 @@
++{
++  "leadership": [
++    {
++      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80",
++      "name": "Ms. Kalyani",
++      "role": "PRINCIPAL",
++      "education": "MCA, M.Sc, and B.Ed"
++    },
++    {
++      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80",
++      "name": "Mr. Robert D'Souza",
++      "role": "HEAD OF MIDDLE STAGE",
++      "education": "M.Sc Mathematics, B.Ed"
++    },
++    {
++      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&q=80",
++      "name": "Ms. Sarah Jenkins",
++      "role": "HEAD OF FOUNDATION STAGE",
++      "education": "M.A. Early Childhood Development"
++    }
++  ],
++  "teachers": [
++    {
++      "category": "Foundation",
++      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
++      "name": "Ms. Priya Mehta",
++      "role": "PRIMARY EDUCATOR",
++      "education": "B.A. English, Montessori Certified"
++    },
++    {
++      "category": "Foundation",
++      "photo": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80",
++      "name": "Ms. Anjali Rao",
++      "role": "NURSERY EDUCATOR",
++      "education": "B.Ed, Early Years Certified"
++    },
++    {
++      "category": "Foundation",
++      "photo": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=80",
++      "name": "Ms. Fatima Sheikh",
++      "role": "KINDERGARTEN TEACHER",
++      "education": "B.A. Psychology, Montessori Certified"
++    },
++    {
++      "category": "Foundation",
++      "photo": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80",
++      "name": "Ms. Neha Kapoor",
++      "role": "PLAY GROUP EDUCATOR",
++      "education": "Diploma in Early Childhood Care"
++    },
++    {
++      "category": "Foundation",
++      "photo": "https://images.unsplash.com/photo-1602052793312-b273b3ce7d4c?w=400&q=80",
++      "name": "Ms. Divya Menon",
++      "role": "FOUNDATION STAGE EDUCATOR",
++      "education": "B.Ed, Montessori Certified"
++    },
++    {
++      "category": "Foundation",
++      "photo": "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?w=400&q=80",
++      "name": "Ms. Ritika Chawla",
++      "role": "NURSERY ASSISTANT TEACHER",
++      "education": "Diploma in Early Childhood Care"
++    },
++    {
++      "category": "Preparatory",
++      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
++      "name": "Ms. Sravani Sharma",
++      "role": "HEAD OF FINE ARTS",
++      "education": "Master of Fine Arts (MFA)"
++    },
++    {
++      "category": "Preparatory",
++      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
++      "name": "Mr. Arjun Nair",
++      "role": "ENGLISH LANGUAGE TEACHER",
++      "education": "M.A. English Literature, B.Ed"
++    },
++    {
++      "category": "Preparatory",
++      "photo": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
++      "name": "Ms. Deepika Reddy",
++      "role": "MATHEMATICS TEACHER",
++      "education": "B.Sc Mathematics, B.Ed"
++    },
++    {
++      "category": "Preparatory",
++      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
++      "name": "Mr. Sandeep Verma",
++      "role": "ENVIRONMENTAL SCIENCE TEACHER",
++      "education": "B.Sc Botany, B.Ed"
++    },
++    {
++      "category": "Middle",
++      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
++      "name": "Mr. Rahul Kumar",
++      "role": "DIRECTOR OF SPORTS",
++      "education": "B.PEd, Certified FIBA Coach"
++    },
++    {
++      "category": "Middle",
++      "photo": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
++      "name": "Mr. Vikram Iyer",
++      "role": "STEM COORDINATOR",
++      "education": "M.Sc Physics, B.Ed"
++    },
++    {
++      "category": "Middle",
++      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
++      "name": "Ms. Lavanya Pillai",
++      "role": "SOCIAL SCIENCE TEACHER",
++      "education": "M.A. History, B.Ed"
++    },
++    {
++      "category": "Middle",
++      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
++      "name": "Mr. Karan Malhotra",
++      "role": "COMPUTER SCIENCE TEACHER",
++      "education": "M.C.A, B.Ed"
++    },
++    {
++      "category": "Middle",
++      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
++      "name": "Ms. Ananya Ghosh",
++      "role": "HINDI LANGUAGE TEACHER",
++      "education": "M.A. Hindi, B.Ed"
++    },
++    {
++      "category": "Middle",
++      "photo": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=80",
++      "name": "Mr. Vivek Choudhary",
++      "role": "CHEMISTRY TEACHER",
++      "education": "M.Sc Chemistry, B.Ed"
++    }
++  ]
++}
+diff -ruN before/content/gallery.json after/content/gallery.json
+--- /dev/null
++++ b/content/gallery.json	2026-07-11 11:17:01.530426144 +0000
+@@ -0,0 +1,32 @@
++{
++  "images": [
++    { "category": "Academics", "caption": "Science Lab", "image": "tabs/academics1.jpg" },
++    { "category": "Academics", "caption": "Classroom Learning", "image": "tabs/academics2.jpg" },
++    { "category": "Academics", "caption": "Art Class", "image": "tabs/academics3.jpg" },
++    { "category": "Academics", "caption": "Group Study", "image": "tabs/academics5.jpg" },
++
++    { "category": "Sports", "caption": "Basketball", "image": "tabs/sports1.jpg" },
++    { "category": "Sports", "caption": "Football Match", "image": "tabs/sports3.jpg" },
++    { "category": "Sports", "caption": "Athletics Race", "image": "tabs/sports4.jpg" },
++    { "category": "Sports", "caption": "Cricket Practice", "image": "tabs/sports5.jpg" },
++    { "category": "Sports", "caption": "Sports Day", "image": "tabs/sports7.jpg" },
++
++    { "category": "Events", "caption": "Annual Day Event", "image": "tabs/events3.jpg" },
++    { "category": "Events", "caption": "School Assembly", "image": "tabs/events2.jpg" },
++    { "category": "Events", "caption": "Award Ceremony", "image": "tabs/events4.jpg" },
++    { "category": "Events", "caption": "Cultural Program", "image": "tabs/events6.jpg" },
++    { "category": "Events", "caption": "Parent-Teacher Meet", "image": "tabs/events8.jpg" },
++
++    { "category": "Trips", "caption": "Field Trip", "image": "tabs/trip.jpg" },
++    { "category": "Trips", "caption": "Museum Visit", "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80" },
++    { "category": "Trips", "caption": "Nature Excursion", "image": "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?w=500&q=80" },
++    { "category": "Trips", "caption": "Zoo Visit", "image": "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=500&q=80" },
++    { "category": "Trips", "caption": "Picnic Outing", "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80" },
++
++    { "category": "Celebrations", "caption": "Dance Celebration", "image": "tabs/celebration3.jpg" },
++    { "category": "Celebrations", "caption": "Festival Celebration", "image": "tabs/celebration4.jpg" },
++    { "category": "Celebrations", "caption": "Birthday Celebration", "image": "tabs/celebration5.jpg" },
++    { "category": "Celebrations", "caption": "Independence Day", "image": "tabs/celebration6.jpg" },
++    { "category": "Celebrations", "caption": "Christmas Celebration", "image": "tabs/celebrations7.jpg" }
++  ]
++}
+diff -ruN before/faculty.html after/faculty.html
+--- a/faculty.html	2026-07-11 11:16:15.898136173 +0000
++++ b/faculty.html	2026-07-11 11:17:42.123787905 +0000
+@@ -59,31 +59,8 @@
+ 
+     <section class="leadership container">
+         <h2 class="section-title center-title">Leadership &amp; Department Heads</h2>
+-        <div class="leader-grid">
+-            <div class="leader-card">
+-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80" alt="Ms. Kalyani">
+-                <div class="leader-info">
+-                    <h3>Ms. Kalyani</h3>
+-                    <div class="leader-role">PRINCIPAL</div>
+-                    <div class="leader-edu">MCA, M.Sc, and B.Ed</div>
+-                </div>
+-            </div>
+-            <div class="leader-card">
+-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Mr. Robert D'Souza">
+-                <div class="leader-info">
+-                    <h3>Mr. Robert D'Souza</h3>
+-                    <div class="leader-role">HEAD OF MIDDLE STAGE</div>
+-                    <div class="leader-edu">M.Sc Mathematics, B.Ed</div>
+-                </div>
+-            </div>
+-            <div class="leader-card">
+-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&q=80" alt="Ms. Sarah Jenkins">
+-                <div class="leader-info">
+-                    <h3>Ms. Sarah Jenkins</h3>
+-                    <div class="leader-role">HEAD OF FOUNDATION STAGE</div>
+-                    <div class="leader-edu">M.A. Early Childhood Development</div>
+-                </div>
+-            </div>
++        <div class="leader-grid" id="leaderGrid">
++            <!-- Rendered dynamically from content/faculty.json by js/faculty-render.js -->
+         </div>
+     </section>
+ 
+@@ -100,147 +77,22 @@
+             
+             <div class="category-block active" data-category="Foundation">
+                 <h3 class="category-title">Foundation Stage</h3>
+-                <div class="teacher-grid">
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Ms. Priya Mehta">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Priya Mehta</h3>
+-                            <div class="teacher-role">PRIMARY EDUCATOR</div>
+-                            <div class="teacher-edu">B.A. English, Montessori Certified</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80" alt="Ms. Anjali Rao">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Anjali Rao</h3>
+-                            <div class="teacher-role">NURSERY EDUCATOR</div>
+-                            <div class="teacher-edu">B.Ed, Early Years Certified</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=80" alt="Ms. Fatima Sheikh">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Fatima Sheikh</h3>
+-                            <div class="teacher-role">KINDERGARTEN TEACHER</div>
+-                            <div class="teacher-edu">B.A. Psychology, Montessori Certified</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80" alt="Ms. Neha Kapoor">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Neha Kapoor</h3>
+-                            <div class="teacher-role">PLAY GROUP EDUCATOR</div>
+-                            <div class="teacher-edu">Diploma in Early Childhood Care</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1602052793312-b273b3ce7d4c?w=400&q=80" alt="Ms. Divya Menon">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Divya Menon</h3>
+-                            <div class="teacher-role">FOUNDATION STAGE EDUCATOR</div>
+-                            <div class="teacher-edu">B.Ed, Montessori Certified</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?w=400&q=80" alt="Ms. Ritika Chawla">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Ritika Chawla</h3>
+-                            <div class="teacher-role">NURSERY ASSISTANT TEACHER</div>
+-                            <div class="teacher-edu">Diploma in Early Childhood Care</div>
+-                        </div>
+-                    </div>
++                <div class="teacher-grid" id="teacherGridFoundation">
++                    <!-- Rendered dynamically from content/faculty.json by js/faculty-render.js -->
+                 </div>
+             </div>
+ 
+             <div class="category-block" data-category="Preparatory">
+                 <h3 class="category-title">Preparatory Stage</h3>
+-                <div class="teacher-grid">
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Ms. Sravani Sharma">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Sravani Sharma</h3>
+-                            <div class="teacher-role">HEAD OF FINE ARTS</div>
+-                            <div class="teacher-edu">Master of Fine Arts (MFA)</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Mr. Arjun Nair">
+-                        <div class="teacher-info">
+-                            <h3>Mr. Arjun Nair</h3>
+-                            <div class="teacher-role">ENGLISH LANGUAGE TEACHER</div>
+-                            <div class="teacher-edu">M.A. English Literature, B.Ed</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Ms. Deepika Reddy">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Deepika Reddy</h3>
+-                            <div class="teacher-role">MATHEMATICS TEACHER</div>
+-                            <div class="teacher-edu">B.Sc Mathematics, B.Ed</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Mr. Sandeep Verma">
+-                        <div class="teacher-info">
+-                            <h3>Mr. Sandeep Verma</h3>
+-                            <div class="teacher-role">ENVIRONMENTAL SCIENCE TEACHER</div>
+-                            <div class="teacher-edu">B.Sc Botany, B.Ed</div>
+-                        </div>
+-                    </div>
++                <div class="teacher-grid" id="teacherGridPreparatory">
++                    <!-- Rendered dynamically from content/faculty.json by js/faculty-render.js -->
+                 </div>
+             </div>
+ 
+             <div class="category-block" data-category="Middle">
+                 <h3 class="category-title">Middle Stage</h3>
+-                <div class="teacher-grid">
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Mr. Rahul Kumar">
+-                        <div class="teacher-info">
+-                            <h3>Mr. Rahul Kumar</h3>
+-                            <div class="teacher-role">DIRECTOR OF SPORTS</div>
+-                            <div class="teacher-edu">B.PEd, Certified FIBA Coach</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Mr. Vikram Iyer">
+-                        <div class="teacher-info">
+-                            <h3>Mr. Vikram Iyer</h3>
+-                            <div class="teacher-role">STEM COORDINATOR</div>
+-                            <div class="teacher-edu">M.Sc Physics, B.Ed</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Ms. Lavanya Pillai">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Lavanya Pillai</h3>
+-                            <div class="teacher-role">SOCIAL SCIENCE TEACHER</div>
+-                            <div class="teacher-edu">M.A. History, B.Ed</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Mr. Karan Malhotra">
+-                        <div class="teacher-info">
+-                            <h3>Mr. Karan Malhotra</h3>
+-                            <div class="teacher-role">COMPUTER SCIENCE TEACHER</div>
+-                            <div class="teacher-edu">M.C.A, B.Ed</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Ms. Ananya Ghosh">
+-                        <div class="teacher-info">
+-                            <h3>Ms. Ananya Ghosh</h3>
+-                            <div class="teacher-role">HINDI LANGUAGE TEACHER</div>
+-                            <div class="teacher-edu">M.A. Hindi, B.Ed</div>
+-                        </div>
+-                    </div>
+-                    <div class="teacher-card">
+-                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=80" alt="Mr. Vivek Choudhary">
+-                        <div class="teacher-info">
+-                            <h3>Mr. Vivek Choudhary</h3>
+-                            <div class="teacher-role">CHEMISTRY TEACHER</div>
+-                            <div class="teacher-edu">M.Sc Chemistry, B.Ed</div>
+-                        </div>
+-                    </div>
++                <div class="teacher-grid" id="teacherGridMiddle">
++                    <!-- Rendered dynamically from content/faculty.json by js/faculty-render.js -->
+                 </div>
+             </div>
+         </div>
+@@ -311,6 +163,7 @@
+ 
+ 
+ <script src="js/faculty.js"></script>
++<script src="js/faculty-render.js"></script>
+ 
+ </body>
+ </html> 
+\ No newline at end of file
+diff -ruN before/gallery.html after/gallery.html
+--- a/gallery.html	2026-07-11 11:16:15.899910859 +0000
++++ b/gallery.html	2026-07-11 11:18:00.386148094 +0000
+@@ -57,113 +57,7 @@
+ 
+     <!-- GALLERY GRID -->
+     <div class="gallery-grid container" id="galleryGrid">
+-
+-        <!-- ACADEMICS -->
+-        <div class="g-item reveal-item" data-category="Academics">
+-            <img src="tabs/academics1.jpg" alt="Science lab" loading="lazy">
+-            <div class="g-overlay"><span>Science Lab</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Academics">
+-            <img src="tabs/academics2.jpg" alt="Classroom learning" loading="lazy">
+-            <div class="g-overlay"><span>Classroom Learning</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Academics">
+-            <img src="tabs/academics3.jpg" alt="Art class" loading="lazy">
+-            <div class="g-overlay"><span>Art Class</span></div>
+-        </div>
+-       
+-        <div class="g-item reveal-item" data-category="Academics">
+-            <img src="tabs/academics5.jpg" alt="Group study" loading="lazy">
+-            <div class="g-overlay"><span>Group Study</span></div>
+-        </div>
+-
+-        <!-- SPORTS -->
+-        <div class="g-item reveal-item" data-category="Sports" style="display:none;">
+-            <img src="tabs/sports1.jpg" alt="Basketball" loading="lazy">
+-            <div class="g-overlay"><span>Basketball</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Sports" style="display:none;">
+-            <img src="tabs/sports3.jpg" alt="Football match" loading="lazy">
+-            <div class="g-overlay"><span>Football Match</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Sports" style="display:none;">
+-            <img src="tabs/sports4.jpg" alt="Athletics race" loading="lazy">
+-            <div class="g-overlay"><span>Athletics Race</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Sports" style="display:none;">
+-            <img src="tabs/sports5.jpg" alt="Cricket practice" loading="lazy">
+-            <div class="g-overlay"><span>Cricket Practice</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Sports" style="display:none;">
+-            <img src="tabs/sports7.jpg" alt="Sports day" loading="lazy">
+-            <div class="g-overlay"><span>Sports Day</span></div>
+-        </div>
+-
+-        <!-- EVENTS -->
+-        <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events3.jpg" alt="Annual day event" loading="lazy">
+-            <div class="g-overlay"><span>Annual Day Event</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events2.jpg" alt="School assembly" loading="lazy">
+-            <div class="g-overlay"><span>School Assembly</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events4.jpg" alt="Award ceremony" loading="lazy">
+-            <div class="g-overlay"><span>Award Ceremony</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events6.jpg" alt="Cultural program" loading="lazy">
+-            <div class="g-overlay"><span>Cultural Program</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events8.jpg" alt="Parent teacher meet" loading="lazy">
+-            <div class="g-overlay"><span>Parent-Teacher Meet</span></div>
+-        </div>
+-
+-        <!-- TRIPS -->
+-        <div class="g-item reveal-item" data-category="Trips" style="display:none;">
+-            <img src="tabs/trip.jpg" alt="Field trip bus" loading="lazy">
+-            <div class="g-overlay"><span>Field Trip</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Trips" style="display:none;">
+-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80" alt="Museum visit" loading="lazy">
+-            <div class="g-overlay"><span>Museum Visit</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Trips" style="display:none;">
+-            <img src="https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?w=500&q=80" alt="Nature excursion" loading="lazy">
+-            <div class="g-overlay"><span>Nature Excursion</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Trips" style="display:none;">
+-            <img src="https://images.unsplash.com/photo-1496843916299-590492c751f4?w=500&q=80" alt="Zoo visit" loading="lazy">
+-            <div class="g-overlay"><span>Zoo Visit</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Trips" style="display:none;">
+-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80" alt="Picnic outing" loading="lazy">
+-            <div class="g-overlay"><span>Picnic Outing</span></div>
+-        </div>
+-
+-        <!-- CELEBRATIONS -->
+-        <div class="g-item reveal-item" data-category="Celebrations" style="display:none;">
+-            <img src="tabs/celebration3.jpg" alt="Dance celebration" loading="lazy">
+-            <div class="g-overlay"><span>Dance Celebration</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Celebrations" style="display:none;">
+-            <img src="tabs/celebration4.jpg" alt="Festival celebration" loading="lazy">
+-            <div class="g-overlay"><span>Festival Celebration</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Celebrations" style="display:none;">
+-            <img src="tabs/celebration5.jpg" alt="Birthday celebration" loading="lazy">
+-            <div class="g-overlay"><span>Birthday Celebration</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Celebrations" style="display:none;">
+-            <img src="tabs/celebration6.jpg" alt="Independence day celebration" loading="lazy">
+-            <div class="g-overlay"><span>Independence Day</span></div>
+-        </div>
+-        <div class="g-item reveal-item" data-category="Celebrations" style="display:none;">
+-            <img src="tabs/celebrations7.jpg" alt="Christmas celebration" loading="lazy">
+-            <div class="g-overlay"><span>Christmas Celebration</span></div>
+-        </div>
++        <!-- Rendered dynamically from content/gallery.json by js/gallery-render.js -->
+     </div>
+ 
+     <!-- VIDEO GALLERY -->
+@@ -323,6 +217,7 @@
+ </footer>
+ <script src="js/main.js"></script>
+ <script src="js/gallery.js"></script>
++<script src="js/gallery-render.js"></script>
+ 
+ </body>
+ </html>  
+\ No newline at end of file
+diff -ruN before/js/faculty-render.js after/js/faculty-render.js
+--- /dev/null
++++ b/js/faculty-render.js	2026-07-11 11:18:27.850429689 +0000
+@@ -0,0 +1,74 @@
++/* =========================================================
++   faculty-render.js
++   Fetches content/faculty.json (managed via the Netlify CMS
++   "Faculty Page" collection) and renders the leadership and
++   teacher cards on the Faculty page. Once rendering is done,
++   it hands off to initFacultyPage() in faculty.js to wire up
++   the filter tabs, scroll reveals, and image skeletons.
++   ========================================================= */
++
++// Tell faculty.js not to auto-run on the (now empty) static markup.
++window.__facultyRenderPending = true;
++
++function escapeHtml(str) {
++  return String(str == null ? "" : str).replace(/[&<>"']/g, (c) => ({
++    "&": "&amp;",
++    "<": "&lt;",
++    ">": "&gt;",
++    '"': "&quot;",
++    "'": "&#39;",
++  }[c]));
++}
++
++function leaderCardHtml(person) {
++  return `
++    <div class="leader-card">
++        <img src="${escapeHtml(person.photo)}" alt="${escapeHtml(person.name)}">
++        <div class="leader-info">
++            <h3>${escapeHtml(person.name)}</h3>
++            <div class="leader-role">${escapeHtml(person.role)}</div>
++            <div class="leader-edu">${escapeHtml(person.education)}</div>
++        </div>
++    </div>`;
++}
++
++function teacherCardHtml(person) {
++  return `
++    <div class="teacher-card">
++        <img src="${escapeHtml(person.photo)}" alt="${escapeHtml(person.name)}">
++        <div class="teacher-info">
++            <h3>${escapeHtml(person.name)}</h3>
++            <div class="teacher-role">${escapeHtml(person.role)}</div>
++            <div class="teacher-edu">${escapeHtml(person.education)}</div>
++        </div>
++    </div>`;
++}
++
++document.addEventListener("DOMContentLoaded", async () => {
++  try {
++    const res = await fetch("content/faculty.json", { cache: "no-store" });
++    if (!res.ok) throw new Error("Failed to load content/faculty.json");
++    const data = await res.json();
++
++    const leaderGrid = document.getElementById("leaderGrid");
++    if (leaderGrid && Array.isArray(data.leadership)) {
++      leaderGrid.innerHTML = data.leadership.map(leaderCardHtml).join("");
++    }
++
++    const stages = ["Foundation", "Preparatory", "Middle"];
++    const teachers = Array.isArray(data.teachers) ? data.teachers : [];
++
++    stages.forEach((stage) => {
++      const grid = document.getElementById("teacherGrid" + stage);
++      if (!grid) return;
++      const members = teachers.filter((t) => t.category === stage);
++      grid.innerHTML = members.map(teacherCardHtml).join("");
++    });
++  } catch (err) {
++    console.error("Could not render faculty data:", err);
++  } finally {
++    if (typeof window.initFacultyPage === "function") {
++      window.initFacultyPage();
++    }
++  }
++});
+diff -ruN before/js/faculty.js after/js/faculty.js
+--- a/js/faculty.js	2026-07-11 11:16:15.903412977 +0000
++++ b/js/faculty.js	2026-07-11 11:18:09.342602686 +0000
+@@ -4,7 +4,7 @@
+    Nav + footer are handled globally by main.js
+    ========================================================= */
+ 
+-   document.addEventListener("DOMContentLoaded", () => {
++   function initFacultyPage() {
+ 
+     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+   
+@@ -77,4 +77,14 @@
+       });
+     });
+   
++  }
++
++  window.initFacultyPage = initFacultyPage;
++
++  // Fallback: if js/faculty-render.js isn't present for some reason,
++  // still run the static behaviour on the hardcoded markup.
++  document.addEventListener("DOMContentLoaded", () => {
++    if (!window.__facultyRenderPending) {
++      initFacultyPage();
++    }
+   });
+\ No newline at end of file
+diff -ruN before/js/gallery-render.js after/js/gallery-render.js
+--- /dev/null
++++ b/js/gallery-render.js	2026-07-11 11:18:35.878430018 +0000
+@@ -0,0 +1,53 @@
++/* =========================================================
++   gallery-render.js
++   Fetches content/gallery.json (managed via the Netlify CMS
++   "Gallery Page" collection) and renders the gallery grid on
++   the Gallery page. Once rendering is done, it hands off to
++   initGalleryPage() in gallery.js to wire up the filter tabs,
++   scroll reveals, video sliders, and image skeletons.
++   ========================================================= */
++
++// Tell gallery.js not to auto-run on the (now empty) static markup.
++window.__galleryRenderPending = true;
++
++function escapeHtml(str) {
++  return String(str == null ? "" : str).replace(/[&<>"']/g, (c) => ({
++    "&": "&amp;",
++    "<": "&lt;",
++    ">": "&gt;",
++    '"': "&quot;",
++    "'": "&#39;",
++  }[c]));
++}
++
++document.addEventListener("DOMContentLoaded", async () => {
++  try {
++    const res = await fetch("content/gallery.json", { cache: "no-store" });
++    if (!res.ok) throw new Error("Failed to load content/gallery.json");
++    const data = await res.json();
++
++    const grid = document.getElementById("galleryGrid");
++    const images = Array.isArray(data.images) ? data.images : [];
++    const activeTab = document.querySelector(".filter-tabs button.active");
++    const activeCategory = activeTab ? activeTab.getAttribute("data-filter") : null;
++
++    if (grid) {
++      grid.innerHTML = images
++        .map((item) => {
++          const hidden = item.category !== activeCategory ? ' style="display:none;"' : "";
++          return `
++        <div class="g-item reveal-item" data-category="${escapeHtml(item.category)}"${hidden}>
++            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption)}" loading="lazy">
++            <div class="g-overlay"><span>${escapeHtml(item.caption)}</span></div>
++        </div>`;
++        })
++        .join("");
++    }
++  } catch (err) {
++    console.error("Could not render gallery data:", err);
++  } finally {
++    if (typeof window.initGalleryPage === "function") {
++      window.initGalleryPage();
++    }
++  }
++});
+diff -ruN before/js/gallery.js after/js/gallery.js
+--- a/js/gallery.js	2026-07-11 11:16:15.906211328 +0000
++++ b/js/gallery.js	2026-07-11 11:18:18.258289942 +0000
+@@ -2,7 +2,7 @@
+    gallery.js  —  Filter tabs, scroll reveals, inline video slider
+    ========================================================= */
+ 
+-   document.addEventListener('DOMContentLoaded', () => {
++   function initGalleryPage() {
+ 
+     /* ── 1. FILTER TABS ── */
+     const tabs  = document.querySelectorAll('.filter-tabs button');
+@@ -273,4 +273,14 @@
+       videoGrid.addEventListener('touchstart', () => { hintPlayed = true; }, { passive: true, once: true });
+     }
+ 
++  }
++
++  window.initGalleryPage = initGalleryPage;
++
++  // Fallback: if js/gallery-render.js isn't present for some reason,
++  // still run the static behaviour on the hardcoded markup.
++  document.addEventListener('DOMContentLoaded', () => {
++    if (!window.__galleryRenderPending) {
++      initGalleryPage();
++    }
+   });
+\ No newline at end of file

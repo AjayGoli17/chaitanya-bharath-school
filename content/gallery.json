@@ -1,0 +1,32 @@
+{
+  "images": [
+    { "category": "Academics", "caption": "Science Lab", "image": "tabs/academics1.jpg" },
+    { "category": "Academics", "caption": "Classroom Learning", "image": "tabs/academics2.jpg" },
+    { "category": "Academics", "caption": "Art Class", "image": "tabs/academics3.jpg" },
+    { "category": "Academics", "caption": "Group Study", "image": "tabs/academics5.jpg" },
+
+    { "category": "Sports", "caption": "Basketball", "image": "tabs/sports1.jpg" },
+    { "category": "Sports", "caption": "Football Match", "image": "tabs/sports3.jpg" },
+    { "category": "Sports", "caption": "Athletics Race", "image": "tabs/sports4.jpg" },
+    { "category": "Sports", "caption": "Cricket Practice", "image": "tabs/sports5.jpg" },
+    { "category": "Sports", "caption": "Sports Day", "image": "tabs/sports7.jpg" },
+
+    { "category": "Events", "caption": "Annual Day Event", "image": "tabs/events3.jpg" },
+    { "category": "Events", "caption": "School Assembly", "image": "tabs/events2.jpg" },
+    { "category": "Events", "caption": "Award Ceremony", "image": "tabs/events4.jpg" },
+    { "category": "Events", "caption": "Cultural Program", "image": "tabs/events6.jpg" },
+    { "category": "Events", "caption": "Parent-Teacher Meet", "image": "tabs/events8.jpg" },
+
+    { "category": "Trips", "caption": "Field Trip", "image": "tabs/trip.jpg" },
+    { "category": "Trips", "caption": "Museum Visit", "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80" },
+    { "category": "Trips", "caption": "Nature Excursion", "image": "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?w=500&q=80" },
+    { "category": "Trips", "caption": "Zoo Visit", "image": "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=500&q=80" },
+    { "category": "Trips", "caption": "Picnic Outing", "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80" },
+
+    { "category": "Celebrations", "caption": "Dance Celebration", "image": "tabs/celebration3.jpg" },
+    { "category": "Celebrations", "caption": "Festival Celebration", "image": "tabs/celebration4.jpg" },
+    { "category": "Celebrations", "caption": "Birthday Celebration", "image": "tabs/celebration5.jpg" },
+    { "category": "Celebrations", "caption": "Independence Day", "image": "tabs/celebration6.jpg" },
+    { "category": "Celebrations", "caption": "Christmas Celebration", "image": "tabs/celebrations7.jpg" }
+  ]
+}

@@ -1,0 +1,32 @@
+diff --git a/gallery.html b/gallery.html
+index 1c0dc6f..f85a8bf 100644
+--- a/gallery.html
++++ b/gallery.html
+@@ -64,11 +64,11 @@
+             <div class="g-overlay"><span>Science Lab</span></div>
+         </div>
+         <div class="g-item reveal-item" data-category="Academics">
+-            <img src="tabs/academics2.jpg"Classroom learning" loading="lazy">
++            <img src="tabs/academics2.jpg" alt="Classroom learning" loading="lazy">
+             <div class="g-overlay"><span>Classroom Learning</span></div>
+         </div>
+         <div class="g-item reveal-item" data-category="Academics">
+-            <img src="tabs/academics3.jpg"Art class" loading="lazy">
++            <img src="tabs/academics3.jpg" alt="Art class" loading="lazy">
+             <div class="g-overlay"><span>Art Class</span></div>
+         </div>
+        
+@@ -101,11 +101,11 @@
+ 
+         <!-- EVENTS -->
+         <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events3.jpg"Annual day event" loading="lazy">
++            <img src="tabs/events3.jpg" alt="Annual day event" loading="lazy">
+             <div class="g-overlay"><span>Annual Day Event</span></div>
+         </div>
+         <div class="g-item reveal-item" data-category="Events" style="display:none;">
+-            <img src="tabs/events2.jpg"School assembly" loading="lazy">
++            <img src="tabs/events2.jpg" alt="School assembly" loading="lazy">
+             <div class="g-overlay"><span>School Assembly</span></div>
+         </div>
+         <div class="g-item reveal-item" data-category="Events" style="display:none;">

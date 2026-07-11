@@ -32,3 +32,50 @@ collections:
       - { label: "Event Name", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
+  - name: "faculty_page"
+    label: "Faculty Page"
+    files:
+      - name: "faculty"
+        label: "Faculty Members"
+        file: "content/faculty.json"
+        fields:
+          - label: "Leadership & Department Heads"
+            name: "leadership"
+            widget: "list"
+            summary: "{{name}} — {{role}}"
+            fields:
+              - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role / Title", name: "role", widget: "string" }
+              - { label: "Education", name: "education", widget: "string" }
+          - label: "Teachers"
+            name: "teachers"
+            widget: "list"
+            summary: "{{name}} — {{category}}"
+            fields:
+              - label: "Stage"
+                name: "category"
+                widget: "select"
+                options: ["Foundation", "Preparatory", "Middle"]
+              - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role / Title", name: "role", widget: "string" }
+              - { label: "Education", name: "education", widget: "string" }
+  - name: "gallery_page"
+    label: "Gallery Page"
+    files:
+      - name: "gallery"
+        label: "Gallery Images"
+        file: "content/gallery.json"
+        fields:
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            summary: "{{caption}} — {{category}}"
+            fields:
+              - label: "Tab"
+                name: "category"
+                widget: "select"
+                options: ["Academics", "Sports", "Events", "Trips", "Celebrations"]
+              - { label: "Caption", name: "caption", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }

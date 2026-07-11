@@ -2,7 +2,7 @@
    gallery.js  —  Filter tabs, scroll reveals, inline video slider
    ========================================================= */
 
-   document.addEventListener('DOMContentLoaded', () => {
+   function initGalleryPage() {
 
     /* ── 1. FILTER TABS ── */
     const tabs  = document.querySelectorAll('.filter-tabs button');
@@ -273,4 +273,14 @@
       videoGrid.addEventListener('touchstart', () => { hintPlayed = true; }, { passive: true, once: true });
     }
 
+  }
+
+  window.initGalleryPage = initGalleryPage;
+
+  // Fallback: if js/gallery-render.js isn't present for some reason,
+  // still run the static behaviour on the hardcoded markup.
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__galleryRenderPending) {
+      initGalleryPage();
+    }
   });

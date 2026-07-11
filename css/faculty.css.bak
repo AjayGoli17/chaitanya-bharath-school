@@ -6,7 +6,7 @@
 /* ── PAGE BACKGROUND ── */
 body {
   background-color: var(--bg-page);
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 /* =========================================================
@@ -217,16 +217,15 @@ body {
     background: #e9e9ec;
     border-radius: 16px;
     overflow: hidden;
-    padding: 0;
+    padding: 18px 18px 24px;
 }
 .leader-card img {
     width: 100%;
     height: 230px;
     object-fit: cover;
-    border-radius: 0;
-    display: block;
+    border-radius: 10px;
 }
-.leader-info { padding: 18px 18px 24px; }
+.leader-info { padding: 18px 4px 0; }
 .leader-info h3 { font-size: 20px; color: var(--primary-dark); margin-bottom: 8px; }
 .leader-role {
     color: var(--accent-gold);
@@ -325,17 +324,17 @@ body {
     background: var(--white);
     border-radius: 14px;
     overflow: hidden;
-    padding: 0;
+    padding: 14px 14px 18px;
     border: 1px solid #eaeaf2;
 }
 .teacher-card img {
     width: 100%;
     height: 230px;
     object-fit: cover;
-    border-radius: 0;
+    border-radius: 9px;
     display: block;
 }
-.teacher-info { padding: 14px 14px 18px; }
+.teacher-info { padding: 14px 4px 0; }
 .teacher-info h3 { font-size: 17px; color: var(--primary-dark); margin-bottom: 6px; }
 .teacher-role {
     color: var(--accent-gold);
@@ -366,13 +365,13 @@ body {
     .teacher-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
     .leader-card,
-    .teacher-card { padding: 0; }
+    .teacher-card { padding: 10px 10px 14px; }
 
     .leader-card img,
     .teacher-card img { height: 130px; }
 
     .leader-info,
-    .teacher-info { padding: 10px 10px 14px; }
+    .teacher-info { padding: 10px 2px 0; }
 
     .leader-info h3  { font-size: 15px; }
     .teacher-info h3 { font-size: 14px; }

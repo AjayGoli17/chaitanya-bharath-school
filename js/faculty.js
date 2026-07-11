@@ -4,7 +4,7 @@
    Nav + footer are handled globally by main.js
    ========================================================= */
 
-   document.addEventListener("DOMContentLoaded", () => {
+   function initFacultyPage() {
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   
@@ -77,4 +77,14 @@
       });
     });
   
+  }
+
+  window.initFacultyPage = initFacultyPage;
+
+  // Fallback: if js/faculty-render.js isn't present for some reason,
+  // still run the static behaviour on the hardcoded markup.
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!window.__facultyRenderPending) {
+      initFacultyPage();
+    }
   });
