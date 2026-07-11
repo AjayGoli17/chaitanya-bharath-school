@@ -1,0 +1,168 @@
+diff -ruN id-before/academics.html id-after/academics.html
+--- a/academics.html	2026-07-11 11:52:37.101745837 +0000
++++ b/academics.html	2026-07-11 11:52:42.729064503 +0000
+@@ -296,6 +296,20 @@
+             </div>
+         </div>
+     </footer>
++    <!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++    <script>
++        if (window.netlifyIdentity) {
++            window.netlifyIdentity.on("init", (user) => {
++                if (!user) {
++                    window.netlifyIdentity.on("login", () => {
++                        document.location.href = "/admin/";
++                    });
++                }
++            });
++        }
++    </script>
++
+     <script src="js/main.js"></script>
+ 
+ 
+diff -ruN id-before/announcement.html id-after/announcement.html
+--- a/announcement.html	2026-07-11 11:52:37.106433030 +0000
++++ b/announcement.html	2026-07-11 11:52:42.729334807 +0000
+@@ -176,6 +176,20 @@
+     </div>
+ </footer>
+ 
++<!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++<script>
++    if (window.netlifyIdentity) {
++        window.netlifyIdentity.on("init", (user) => {
++            if (!user) {
++                window.netlifyIdentity.on("login", () => {
++                    document.location.href = "/admin/";
++                });
++            }
++        });
++    }
++</script>
++
+ <script src="js/main.js"></script>
+   <script src="js/cms-content.js"></script>
+ 
+diff -ruN id-before/contact.html id-after/contact.html
+--- a/contact.html	2026-07-11 11:52:37.110040001 +0000
++++ b/contact.html	2026-07-11 11:52:42.729797686 +0000
+@@ -393,6 +393,20 @@
+ </footer>
+  
+ 
++<!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++<script>
++    if (window.netlifyIdentity) {
++        window.netlifyIdentity.on("init", (user) => {
++            if (!user) {
++                window.netlifyIdentity.on("login", () => {
++                    document.location.href = "/admin/";
++                });
++            }
++        });
++    }
++</script>
++
+ <script src="js/main.js"></script>
+ <script src="js/contact.js"></script>
+ </body>
+diff -ruN id-before/facilities.html id-after/facilities.html
+--- a/facilities.html	2026-07-11 11:52:37.114604009 +0000
++++ b/facilities.html	2026-07-11 11:52:42.730608080 +0000
+@@ -241,6 +241,20 @@
+     </div>
+ </footer>
+ 
++  <!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++  <script>
++      if (window.netlifyIdentity) {
++          window.netlifyIdentity.on("init", (user) => {
++              if (!user) {
++                  window.netlifyIdentity.on("login", () => {
++                      document.location.href = "/admin/";
++                  });
++              }
++          });
++      }
++  </script>
++
+   <script src="js/main.js"></script>
+   <script src="js/facilities.js"></script>
+ 
+diff -ruN id-before/faculty.html id-after/faculty.html
+--- a/faculty.html	2026-07-11 11:52:37.092564062 +0000
++++ b/faculty.html	2026-07-11 11:52:42.728387102 +0000
+@@ -159,6 +159,20 @@
+         </div>
+     </div>
+ </footer>
++<!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++<script>
++    if (window.netlifyIdentity) {
++        window.netlifyIdentity.on("init", (user) => {
++            if (!user) {
++                window.netlifyIdentity.on("login", () => {
++                    document.location.href = "/admin/";
++                });
++            }
++        });
++    }
++</script>
++
+ <script src="js/main.js"></script>
+ 
+ 
+diff -ruN id-before/gallery.html id-after/gallery.html
+--- a/gallery.html	2026-07-11 11:52:37.097464833 +0000
++++ b/gallery.html	2026-07-11 11:52:42.728688762 +0000
+@@ -215,6 +215,20 @@
+         </div>
+     </div>
+ </footer>
++<!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++<script>
++    if (window.netlifyIdentity) {
++        window.netlifyIdentity.on("init", (user) => {
++            if (!user) {
++                window.netlifyIdentity.on("login", () => {
++                    document.location.href = "/admin/";
++                });
++            }
++        });
++    }
++</script>
++
+ <script src="js/main.js"></script>
+ <script src="js/gallery.js"></script>
+ <script src="js/gallery-render.js"></script>
+diff -ruN id-before/index.html id-after/index.html
+--- a/index.html	2026-07-11 11:52:37.086307737 +0000
++++ b/index.html	2026-07-11 11:52:42.722951866 +0000
+@@ -484,6 +484,20 @@
+         </div>
+     </footer>
+ 
++    <!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
++    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
++    <script>
++        if (window.netlifyIdentity) {
++            window.netlifyIdentity.on("init", (user) => {
++                if (!user) {
++                    window.netlifyIdentity.on("login", () => {
++                        document.location.href = "/admin/";
++                    });
++                }
++            });
++        }
++    </script>
++
+     <script src="js/main.js"></script>
+ 
+ 
