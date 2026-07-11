@@ -337,36 +337,17 @@ function toggleVideo(wrapper) {
 document.querySelectorAll('.event-vid video').forEach(video => {
     video.muted = true;
 
-    // Force-render the real first frame immediately (instead of
-    // a blank black box) by seeking a hair into the video as
-    // soon as we know its metadata/duration.
     const paintFirstFrame = () => {
         try {
-            if (video.readyState >= 1 && video.currentTime === 0) {
+            if (video.currentTime === 0) {
                 video.currentTime = 0.1;
             }
         } catch (e) { /* ignore seek errors */ }
     };
+
     if (video.readyState >= 1) {
         paintFirstFrame();
     } else {
         video.addEventListener('loadedmetadata', paintFirstFrame, { once: true });
-    }
-
-    // Play only while the card is actually visible on screen.
-    if ('IntersectionObserver' in window) {
-        const playObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    video.play().catch(() => {});
-                } else {
-                    video.pause();
-                }
-            });
-        }, { threshold: 0.5 });
-        playObserver.observe(video);
-    } else {
-        // Fallback for browsers without IntersectionObserver support.
-        video.play().catch(() => {});
     }
 });
