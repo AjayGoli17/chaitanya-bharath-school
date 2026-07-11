@@ -16,6 +16,7 @@
 
     setTimeout(function () {
       document.body.classList.remove('is-loading');
+      document.documentElement.classList.add('hero-in');
       loader.classList.add('loader-hidden');
       loader.addEventListener('transitionend', function () {
         loader.remove();

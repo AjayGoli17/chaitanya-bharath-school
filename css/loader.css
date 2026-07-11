@@ -8,7 +8,7 @@ body.is-loading{ overflow:hidden; }
 }
 .loader img{ width:110px; }
 .loader .track{
-  width:220px; height:6px; background:#eef0f8;
+  width:clamp(130px, 40vw, 220px); height:6px; background:#eef0f8;
   border-radius:6px; overflow:hidden; margin-top:22px;
 }
 .loader .bar{

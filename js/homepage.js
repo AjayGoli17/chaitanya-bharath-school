@@ -1,39 +1,26 @@
 /* =========================================================
    Event Video Cards: Play / Pause toggle
    ========================================================= */
-   function toggleVideo(wrapper) {
+function toggleVideo(wrapper) {
     const video = wrapper.querySelector('video');
     const btn   = wrapper.querySelector('.play-btn i');
 
-    // Pause all OTHER videos first
+    // Mute every other card so only one plays with sound at a time
     document.querySelectorAll('.event-vid').forEach(vid => {
         if (vid !== wrapper) {
             const v = vid.querySelector('video');
             const b = vid.querySelector('.play-btn i');
-            if (v) v.pause();
+            if (v) v.muted = true;
             if (b) { b.classList.remove('fa-pause'); b.classList.add('fa-play'); }
             vid.classList.remove('playing');
         }
     });
 
-    if (video.paused) {
-        video.play();
-        btn.classList.remove('fa-play');
-        btn.classList.add('fa-pause');
-        wrapper.classList.add('playing');       // CSS hides button while playing
-    } else {
-        video.pause();
-        btn.classList.remove('fa-pause');
-        btn.classList.add('fa-play');
-        wrapper.classList.remove('playing');
-    }
-
-    // When video ends, reset
-    video.onended = function () {
-        btn.classList.remove('fa-pause');
-        btn.classList.add('fa-play');
-        wrapper.classList.remove('playing');
-    };
+    // Unmute this card - it's now the real playback with sound
+    video.muted = false;
+    btn.classList.remove('fa-play');
+    btn.classList.add('fa-pause');
+    wrapper.classList.add('playing');
 }
 
 /* =========================================================

@@ -1,0 +1,60 @@
+diff --git a/index.html b/index.html
+index b5b7e86..f4c1edf 100644
+--- a/index.html
++++ b/index.html
+@@ -19,7 +19,7 @@
+ <body class="is-loading">
+ 
+     <div class="loader" id="pageLoader">
+-        <img src="logo1.jpg" alt="CBS Logo">
++        <img src="logo1.png" alt="CBS Logo">
+         <div class="track"><div class="bar"></div></div>
+     </div>
+ 
+diff --git a/js/loader.js b/js/loader.js
+index ced273b..8d44063 100644
+--- a/js/loader.js
++++ b/js/loader.js
+@@ -1,10 +1,34 @@
+-window.addEventListener('load', function () {
++(function () {
+   var loader = document.getElementById('pageLoader');
+-  document.body.classList.remove('is-loading');
+-  if (loader) {
+-    loader.classList.add('loader-hidden');
+-    loader.addEventListener('transitionend', function () {
+-      loader.remove();
+-    }, { once: true });
++  if (!loader) return;
++
++  var MIN_DISPLAY_MS = 1800;  // let the bar animation actually play out
++  var MAX_WAIT_MS = 6000;     // safety net if 'load' is ever delayed/blocked
++  var startTime = Date.now();
++  var hidden = false;
++
++  function hideLoader() {
++    if (hidden) return;
++    hidden = true;
++
++    var elapsed = Date.now() - startTime;
++    var remaining = Math.max(MIN_DISPLAY_MS - elapsed, 0);
++
++    setTimeout(function () {
++      document.body.classList.remove('is-loading');
++      loader.classList.add('loader-hidden');
++      loader.addEventListener('transitionend', function () {
++        loader.remove();
++      }, { once: true });
++    }, remaining);
+   }
+-});
++
++  if (document.readyState === 'complete') {
++    hideLoader();
++  } else {
++    window.addEventListener('load', hideLoader);
++  }
++
++  // Fallback in case 'load' never fires (e.g. a hung request)
++  setTimeout(hideLoader, MAX_WAIT_MS);
++})();

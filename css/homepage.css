@@ -250,9 +250,6 @@ body { overflow-x: clip; max-width: 100%; }
     z-index: 2;
 }
 
-/* Hide button while playing; reveal on hover */
-.event-vid.playing .play-btn { opacity: 0; }
-.event-vid.playing:hover .play-btn { opacity: 1; }
 .event-card h4 { font-family: var(--font-heading); font-size: 18px; margin-bottom: 8px; font-weight: 600; }
 .event-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6;}
 
@@ -845,19 +842,19 @@ body { overflow-x: clip; max-width: 100%; }
 
 /* ── 2. HERO STAGGER ────────────────────────────────────── */
 
-.js .hero-tagline,
-.js .hero-title,
-.js .hero-desc,
-.js .hero-actions,
-.js .hero-image-wrapper {
+.hero-in .hero-tagline,
+.hero-in .hero-title,
+.hero-in .hero-desc,
+.hero-in .hero-actions,
+.hero-in .hero-image-wrapper {
     opacity: 0;
     animation: fadeSlideUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.js .hero-tagline        { animation-delay: 0.05s; }
-.js .hero-title          { animation-delay: 0.18s; }
-.js .hero-desc           { animation-delay: 0.30s; }
-.js .hero-actions        { animation-delay: 0.42s; }
-.js .hero-image-wrapper  { animation-delay: 0.10s; }
+.hero-in .hero-tagline        { animation-delay: 0.05s; }
+.hero-in .hero-title          { animation-delay: 0.18s; }
+.hero-in .hero-desc           { animation-delay: 0.30s; }
+.hero-in .hero-actions        { animation-delay: 0.42s; }
+.hero-in .hero-image-wrapper  { animation-delay: 0.10s; }
 
 /* ── 3. FLOATING BADGES BOB ─────────────────────────────── */
 
