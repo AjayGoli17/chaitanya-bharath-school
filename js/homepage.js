@@ -18,7 +18,7 @@ function toggleVideo(wrapper) {
 
     // Toggle play/pause on this card
     if (video.paused) {
-        video.muted = false;
+        video.muted = true;
         video.play().catch(err => console.error('Video play failed:', err));
         btn.classList.remove('fa-play');
         btn.classList.add('fa-pause');

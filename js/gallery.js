@@ -93,6 +93,7 @@
 
       btn.addEventListener('click', () => {
         if (video.paused) {
+          video.muted = true;
           video.play();
         } else {
           video.pause();
