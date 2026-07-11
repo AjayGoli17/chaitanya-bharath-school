@@ -5,22 +5,30 @@ function toggleVideo(wrapper) {
     const video = wrapper.querySelector('video');
     const btn   = wrapper.querySelector('.play-btn i');
 
-    // Mute every other card so only one plays with sound at a time
+    // Pause & mute every other card so only one plays at a time
     document.querySelectorAll('.event-vid').forEach(vid => {
         if (vid !== wrapper) {
             const v = vid.querySelector('video');
             const b = vid.querySelector('.play-btn i');
-            if (v) v.muted = true;
+            if (v) { v.pause(); v.muted = true; }
             if (b) { b.classList.remove('fa-pause'); b.classList.add('fa-play'); }
             vid.classList.remove('playing');
         }
     });
 
-    // Unmute this card - it's now the real playback with sound
-    video.muted = false;
-    btn.classList.remove('fa-play');
-    btn.classList.add('fa-pause');
-    wrapper.classList.add('playing');
+    // Toggle play/pause on this card
+    if (video.paused) {
+        video.muted = false;
+        video.play().catch(err => console.error('Video play failed:', err));
+        btn.classList.remove('fa-play');
+        btn.classList.add('fa-pause');
+        wrapper.classList.add('playing');
+    } else {
+        video.pause();
+        btn.classList.remove('fa-pause');
+        btn.classList.add('fa-play');
+        wrapper.classList.remove('playing');
+    }
 }
 
 /* =========================================================
@@ -316,3 +324,17 @@ function toggleVideo(wrapper) {
 
     galItems.forEach(item => observer.observe(item));
 })();
+/* =========================================================
+   Force-start the silent event-card video previews.
+   Some browsers (notably Safari) don't reliably honor the
+   HTML autoplay attribute alone — explicitly play() each one.
+   ========================================================= */
+document.querySelectorAll('.event-vid video').forEach(video => {
+    video.muted = true;
+    const startPreview = () => video.play().catch(() => {});
+    if (video.readyState >= 2) {
+        startPreview();
+    } else {
+        video.addEventListener('loadeddata', startPreview, { once: true });
+    }
+});

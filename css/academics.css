@@ -416,6 +416,26 @@ body { background: var(--page-bg); }
 .img-reveal.visible { opacity: 1; transform: translateY(0); }
 .img-reveal.delay-1 { transition-delay: 150ms; }
 
+/* --- Card pair reveal: fade-in + slide-up, 2 cards per scroll trigger.
+   Applied via JS (initCardPairReveal) to the philosophy-grid cards and
+   the beyond-section info-cards. Each group of 2 fades up together the
+   moment that group scrolls into view — independent of the other
+   groups — rather than the whole list animating in at once. --- */
+.reveal-pair {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-pair.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Second card in each pair lands a beat after the first */
+.reveal-pair.reveal-pair-delay.visible {
+    transition-delay: 140ms;
+}
+
 /* ===========================================================
    PHILOSOPHY GRID — scroll-triggered entrance + icon
    micro-interaction.
@@ -477,7 +497,7 @@ body { background: var(--page-bg); }
 
 /* --- Reduced motion override --- */
 @media (prefers-reduced-motion: reduce) {
-    .fade-up, .stagger-children > *, .img-reveal, .card-list-stagger > .info-card { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .fade-up, .stagger-children > *, .img-reveal, .card-list-stagger > .info-card, .reveal-pair { transition: none !important; opacity: 1 !important; transform: none !important; }
     .intro .badge, .intro h1, .intro p { animation: none !important; opacity: 1 !important; transform: none !important; }
     .floating-badge { opacity: 1 !important; animation: none !important; }
     .btn-yellow::after { display: none; }
