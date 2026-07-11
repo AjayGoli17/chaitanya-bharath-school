@@ -336,18 +336,4 @@ function toggleVideo(wrapper) {
    ========================================================= */
 document.querySelectorAll('.event-vid video').forEach(video => {
     video.muted = true;
-
-    const paintFirstFrame = () => {
-        try {
-            if (video.currentTime === 0) {
-                video.currentTime = 0.1;
-            }
-        } catch (e) { /* ignore seek errors */ }
-    };
-
-    if (video.readyState >= 1) {
-        paintFirstFrame();
-    } else {
-        video.addEventListener('loadedmetadata', paintFirstFrame, { once: true });
-    }
 });
