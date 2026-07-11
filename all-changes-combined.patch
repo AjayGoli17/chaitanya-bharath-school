@@ -1,0 +1,208 @@
+diff --git a/css/academics.css b/css/academics.css
+index b93ff84..f8e1606 100644
+--- a/css/academics.css
++++ b/css/academics.css
+@@ -416,6 +416,26 @@ body { background: var(--page-bg); }
+ .img-reveal.visible { opacity: 1; transform: translateY(0); }
+ .img-reveal.delay-1 { transition-delay: 150ms; }
+ 
++/* --- Card pair reveal: fade-in + slide-up, 2 cards per scroll trigger.
++   Applied via JS (initCardPairReveal) to the philosophy-grid cards and
++   the beyond-section info-cards. Each group of 2 fades up together the
++   moment that group scrolls into view — independent of the other
++   groups — rather than the whole list animating in at once. --- */
++.reveal-pair {
++    opacity: 0;
++    transform: translateY(28px);
++    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
++                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
++}
++.reveal-pair.visible {
++    opacity: 1;
++    transform: translateY(0);
++}
++/* Second card in each pair lands a beat after the first */
++.reveal-pair.reveal-pair-delay.visible {
++    transition-delay: 140ms;
++}
++
+ /* ===========================================================
+    PHILOSOPHY GRID — scroll-triggered entrance + icon
+    micro-interaction.
+@@ -477,7 +497,7 @@ body { background: var(--page-bg); }
+ 
+ /* --- Reduced motion override --- */
+ @media (prefers-reduced-motion: reduce) {
+-    .fade-up, .stagger-children > *, .img-reveal, .card-list-stagger > .info-card { transition: none !important; opacity: 1 !important; transform: none !important; }
++    .fade-up, .stagger-children > *, .img-reveal, .card-list-stagger > .info-card, .reveal-pair { transition: none !important; opacity: 1 !important; transform: none !important; }
+     .intro .badge, .intro h1, .intro p { animation: none !important; opacity: 1 !important; transform: none !important; }
+     .floating-badge { opacity: 1 !important; animation: none !important; }
+     .btn-yellow::after { display: none; }
+diff --git a/css/homepage.css b/css/homepage.css
+index 46e20a7..d8286a4 100644
+--- a/css/homepage.css
++++ b/css/homepage.css
+@@ -248,6 +248,12 @@ body { overflow-x: clip; max-width: 100%; }
+     transition: opacity 0.3s ease, background 0.3s ease;
+     pointer-events: none;
+     z-index: 2;
++    opacity: 1;
++}
++
++/* Hide the play button while the video is actively playing */
++.event-vid.playing .play-btn {
++    opacity: 0;
+ }
+ 
+ .event-card h4 { font-family: var(--font-heading); font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+diff --git a/index.html b/index.html
+index 9b128fc..fdce099 100644
+--- a/index.html
++++ b/index.html
+@@ -301,7 +301,7 @@
+                     <!-- Event Card 1 -->
+                     <div class="event-card">
+                         <div class="event-vid" onclick="toggleVideo(this)">
+-                            <video src="annual1.mp4" muted autoplay loop playsinline preload="auto"></video>
++                            <video src="annual1.mp4" muted loop playsinline preload="metadata"></video>
+                             <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                         </div>
+                         <h4>Annual Sports Day 2023</h4>
+@@ -311,7 +311,7 @@
+                     <!-- Event Card 2 -->
+                     <div class="event-card">
+                         <div class="event-vid" onclick="toggleVideo(this)">
+-                            <video src="annual2.mp4" muted autoplay loop playsinline preload="auto"></video>
++                            <video src="annual2.mp4" muted loop playsinline preload="metadata"></video>
+                             <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                         </div>
+                         <h4>Bathukamma Celebrations</h4>
+@@ -321,7 +321,7 @@
+                     <!-- Event Card 3 -->
+                     <div class="event-card">
+                         <div class="event-vid" onclick="toggleVideo(this)">
+-                            <video src="videos/cultural-fest.mp4" muted autoplay loop playsinline preload="auto"></video>
++                            <video src="krishnashtami.mp4" muted loop playsinline preload="metadata"></video>
+                             <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                         </div>
+                         <h4>Krishnashtami Celebrations</h4>
+diff --git a/js/academics.js b/js/academics.js
+index d96caaa..d83f584 100644
+--- a/js/academics.js
++++ b/js/academics.js
+@@ -5,15 +5,48 @@ document.querySelectorAll('a[href="#"]').forEach(anchor => {
+ 
+ /* ===== SCROLL ANIMATIONS ===== */
+ 
+-/* 1. Fade-up on scroll — philosophy grid, section headers, CTA, beyond section */
++/* Fade-in + slide-up scroll reveal, triggered in independent groups of
++   `groupSize` cards at a time — each group animates in only once that
++   group scrolls into view, instead of the whole list revealing together. */
++function initCardPairReveal(selector, groupSize = 2) {
++    const items = Array.from(document.querySelectorAll(selector));
++    if (!items.length) return;
++
++    const groups = [];
++    for (let i = 0; i < items.length; i += groupSize) {
++        groups.push(items.slice(i, i + groupSize));
++    }
++
++    items.forEach(el => el.classList.add('reveal-pair'));
++    groups.forEach(group => {
++        group.forEach((el, idx) => {
++            if (idx > 0) el.classList.add('reveal-pair-delay');
++        });
++    });
++
++    const pairObserver = new IntersectionObserver((entries) => {
++        entries.forEach(entry => {
++            if (!entry.isIntersecting) return;
++            const group = groups.find(g => g.includes(entry.target));
++            if (!group) return;
++            group.forEach(el => {
++                el.classList.add('visible');
++                pairObserver.unobserve(el);
++            });
++        });
++    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
++
++    items.forEach(el => pairObserver.observe(el));
++}
++
++/* 1. Fade-up on scroll — section headers, CTA, beyond section */
+ const fadeUpEls = document.querySelectorAll(
+     '.section-header, .cta-banner, .beyond-text, .beyond-image'
+ );
+ fadeUpEls.forEach(el => el.classList.add('fade-up'));
+ 
+-/* 2. Stagger entrance — philosophy grid cards */
+-const philGrid = document.querySelector('.philosophy-grid');
+-if (philGrid) philGrid.classList.add('stagger-children');
++/* 2. Philosophy grid cards — fade-in/slide-up scroll reveal, 2 cards per trigger */
++initCardPairReveal('.philosophy-grid .card', 2);
+ 
+ /* 3. Stage text blocks fade-up */
+ document.querySelectorAll('.stage-i-text, .stage-ii-text, .stage-iii-text').forEach(el => {
+@@ -21,9 +54,8 @@ document.querySelectorAll('.stage-i-text, .stage-ii-text, .stage-iii-text').forE
+ });
+ 
+ 
+-/* 4. Info cards stagger — beyond section */
+-const cardList = document.querySelector('.card-list');
+-if (cardList) cardList.classList.add('card-list-stagger');
++/* 4. Info cards (beyond section) — same fade-in/slide-up reveal, 2 cards per trigger */
++initCardPairReveal('.card-list .info-card', 2);
+ 
+ /* 5. Image pairs staggered reveal */
+ document.querySelectorAll('.comp-1-left, .comp-2-left, .comp-3 img').forEach(el => {
+@@ -45,7 +77,7 @@ const io = new IntersectionObserver((entries) => {
+ }, observerOpts);
+ 
+ document.querySelectorAll(
+-    '.fade-up, .stagger-children, .img-reveal, .floating-badge, .card-list-stagger'
++    '.fade-up, .img-reveal, .floating-badge'
+ ).forEach(el => io.observe(el));
+ 
+ /* 5. Stage label line draw — separate observer for the ::before line */
+diff --git a/js/homepage.js b/js/homepage.js
+index f73767f..d4cf490 100644
+--- a/js/homepage.js
++++ b/js/homepage.js
+@@ -5,22 +5,30 @@ function toggleVideo(wrapper) {
+     const video = wrapper.querySelector('video');
+     const btn   = wrapper.querySelector('.play-btn i');
+ 
+-    // Mute every other card so only one plays with sound at a time
++    // Pause & mute every other card so only one plays at a time
+     document.querySelectorAll('.event-vid').forEach(vid => {
+         if (vid !== wrapper) {
+             const v = vid.querySelector('video');
+             const b = vid.querySelector('.play-btn i');
+-            if (v) v.muted = true;
++            if (v) { v.pause(); v.muted = true; }
+             if (b) { b.classList.remove('fa-pause'); b.classList.add('fa-play'); }
+             vid.classList.remove('playing');
+         }
+     });
+ 
+-    // Unmute this card - it's now the real playback with sound
+-    video.muted = false;
+-    btn.classList.remove('fa-play');
+-    btn.classList.add('fa-pause');
+-    wrapper.classList.add('playing');
++    // Toggle play/pause on this card
++    if (video.paused) {
++        video.muted = false;
++        video.play().catch(err => console.error('Video play failed:', err));
++        btn.classList.remove('fa-play');
++        btn.classList.add('fa-pause');
++        wrapper.classList.add('playing');
++    } else {
++        video.pause();
++        btn.classList.remove('fa-pause');
++        btn.classList.add('fa-play');
++        wrapper.classList.remove('playing');
++    }
+ }
+ 
+ /* =========================================================

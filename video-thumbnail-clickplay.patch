@@ -1,0 +1,70 @@
+diff --git a/index.html b/index.html
+index fdce099..faaeee7 100644
+--- a/index.html
++++ b/index.html
+@@ -301,7 +301,7 @@
+                     <!-- Event Card 1 -->
+                     <div class="event-card">
+                         <div class="event-vid" onclick="toggleVideo(this)">
+-                            <video src="annual1.mp4" muted loop playsinline preload="metadata"></video>
++                            <video src="annual1.mp4" muted loop playsinline preload="auto"></video>
+                             <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                         </div>
+                         <h4>Annual Sports Day 2023</h4>
+@@ -311,7 +311,7 @@
+                     <!-- Event Card 2 -->
+                     <div class="event-card">
+                         <div class="event-vid" onclick="toggleVideo(this)">
+-                            <video src="annual2.mp4" muted loop playsinline preload="metadata"></video>
++                            <video src="annual2.mp4" muted loop playsinline preload="auto"></video>
+                             <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                         </div>
+                         <h4>Bathukamma Celebrations</h4>
+@@ -321,7 +321,7 @@
+                     <!-- Event Card 3 -->
+                     <div class="event-card">
+                         <div class="event-vid" onclick="toggleVideo(this)">
+-                            <video src="krishnashtami.mp4" muted loop playsinline preload="metadata"></video>
++                            <video src="krishnashtami.mp4" muted loop playsinline preload="auto"></video>
+                             <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                         </div>
+                         <h4>Krishnashtami Celebrations</h4>
+diff --git a/js/homepage.js b/js/homepage.js
+index c2b4723..0ef092c 100644
+--- a/js/homepage.js
++++ b/js/homepage.js
+@@ -325,16 +325,27 @@ function toggleVideo(wrapper) {
+     galItems.forEach(item => observer.observe(item));
+ })();
+ /* =========================================================
+-   Force-start the silent event-card video previews.
+-   Some browsers (notably Safari) don't reliably honor the
+-   HTML autoplay attribute alone — explicitly play() each one.
++   Event-card video previews.
++   Force the browser to decode & paint the video's own real
++   first frame as soon as data is available, so the card shows
++   actual video content instead of a black box — before the
++   user ever clicks play. Playback itself only starts on click,
++   via toggleVideo() above.
+    ========================================================= */
+ document.querySelectorAll('.event-vid video').forEach(video => {
+     video.muted = true;
+-    const startPreview = () => video.play().catch(() => {});
+-    if (video.readyState >= 2) {
+-        startPreview();
++
++    const paintFirstFrame = () => {
++        try {
++            if (video.currentTime === 0) {
++                video.currentTime = 0.1;
++            }
++        } catch (e) { /* ignore seek errors */ }
++    };
++
++    if (video.readyState >= 1) {
++        paintFirstFrame();
+     } else {
+-        video.addEventListener('loadeddata', startPreview, { once: true });
++        video.addEventListener('loadedmetadata', paintFirstFrame, { once: true });
+     }
+ });
