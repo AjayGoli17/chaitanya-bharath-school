@@ -6,7 +6,7 @@
 /* ── PAGE BACKGROUND ── */
 body {
   background-color: var(--bg-page);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* =========================================================
