@@ -362,26 +362,32 @@ body {
 }
 
 @media (max-width: 560px) {
-    .leader-grid  { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .leader-grid  { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .teacher-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
     .leader-card,
     .teacher-card { padding: 0; }
 
-    .leader-card img,
+    .leader-card img { height: 90px; }
     .teacher-card img { height: 130px; }
 
     .leader-info,
     .teacher-info { padding: 10px 10px 14px; }
 
-    .leader-info h3  { font-size: 15px; }
+    .leader-info { padding: 8px 6px 10px; }
+
+    .leader-info h3  { font-size: 12px; }
     .teacher-info h3 { font-size: 14px; }
 
     .leader-role,
     .teacher-role { font-size: 10px; margin-bottom: 6px; }
 
+    .leader-role { font-size: 8.5px; margin-bottom: 4px; }
+
     .leader-edu,
     .teacher-edu { font-size: 11.5px; }
+
+    .leader-edu { font-size: 9.5px; }
 
     .teachers-header { flex-direction: column; align-items: flex-start; gap: 16px; }
 
