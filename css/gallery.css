@@ -230,25 +230,15 @@ body {
   z-index: 2;
   opacity: 1;
 }
-.video-toggle-btn:hover {
-  background: rgba(0,0,0,0.75);
-  transform: translate(-50%, -50%) scale(1.06);
-}
 .video-toggle-btn svg {
   width: 46%;
   height: 46%;
 }
 .video-toggle-btn .icon-play { margin-left: 2px; }
 
-/* ✅ Hide button while playing; smoothly reappear on hover/tap */
+/* Hide button while playing (same as home page: no hover-reveal) */
 .video-wrap.is-playing .video-toggle-btn {
   opacity: 0;
-  pointer-events: none;
-}
-.video-wrap.is-playing:hover .video-toggle-btn,
-.video-wrap.is-playing:focus-within .video-toggle-btn {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 /* ── EVENTS HEADER ── */
@@ -274,19 +264,13 @@ body {
 
 /* ── VIDEO CARD ── */
 .video-card {
-  transition: transform 0.3s ease;
+  cursor: pointer;
 }
-.video-card:hover { transform: translateY(-5px); }
 
 .video-card .video-wrap {
   border-radius: 10px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-  transition: box-shadow 0.3s ease;
   overflow: hidden;
-}
-.video-card:hover .video-wrap {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
 }
 .video-card-el {
   width: 100%;
