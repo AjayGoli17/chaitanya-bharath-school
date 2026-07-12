@@ -122,7 +122,7 @@ async function renderExamSchedules() {
   container.innerHTML = entries
     .map((entry, i) => {
       const pdfBtn = entry.data.pdf
-        ? `<a class="icon-btn" href="${entry.data.pdf}" target="_blank" rel="noopener" title="Download PDF">↓</a>`
+        ? `<a class="icon-btn" href="${entry.data.pdf}" download title="Download PDF">↓</a>`
         : "";
       return `
         <div class="exam-card light reveal" style="--reveal-delay:${Math.min(i, 4) * 0.08}s">
