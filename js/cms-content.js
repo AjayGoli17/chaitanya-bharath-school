@@ -92,7 +92,7 @@ async function renderAnnouncements() {
           ? `<span class="badge badge-urgent">Urgent</span>`
           : "";
       return `
-        <div class="ann-card">
+        <div class="ann-card reveal" style="--reveal-delay:${Math.min(i, 4) * 0.08}s">
           <div class="ann-top">
             ${urgentBadge}
             <span class="ann-date">${formatDate(entry.data.date)}</span>
@@ -103,6 +103,9 @@ async function renderAnnouncements() {
       `;
     })
     .join("");
+
+  if (window.observeReveal) window.observeReveal(container);
+  else container.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
 }
 
 /** Exam schedules -> fills #exam-schedules-list (keeps .exam-card styling) */
@@ -122,7 +125,7 @@ async function renderExamSchedules() {
         ? `<a class="icon-btn" href="${entry.data.pdf}" target="_blank" rel="noopener" title="Download PDF">↓</a>`
         : "";
       return `
-        <div class="exam-card light">
+        <div class="exam-card light reveal" style="--reveal-delay:${Math.min(i, 4) * 0.08}s">
           <span class="exam-tag upcoming">${entry.data.class || "ALL CLASSES"}</span>
           <h3>${entry.data.title || "Untitled"}</h3>
           <p>${entry.data.description || ""}</p>
@@ -135,6 +138,9 @@ async function renderExamSchedules() {
       `;
     })
     .join("");
+
+  if (window.observeReveal) window.observeReveal(container);
+  else container.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
 }
 
 /** Events -> fills #events-list (keeps .timeline / .timeline-item styling) */
@@ -151,7 +157,7 @@ async function renderEvents() {
   container.innerHTML = entries
     .map(
       (entry, i) => `
-      <div class="timeline-item">
+      <div class="timeline-item reveal" style="--reveal-delay:${Math.min(i, 4) * 0.08}s">
         <span class="timeline-dot"></span>
         <div class="timeline-date">${formatDate(entry.data.date, { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()}</div>
         <h4>${entry.data.title || "Untitled"}</h4>
@@ -160,6 +166,9 @@ async function renderEvents() {
     `
     )
     .join("");
+
+  if (window.observeReveal) window.observeReveal(container);
+  else container.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
