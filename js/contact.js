@@ -1,16 +1,20 @@
 (function () {
 
   /* ─── SCROLL FADE-UP (cards) ─────────────────────────── */
-  const fadeEls = document.querySelectorAll('.fade-up');
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  fadeEls.forEach(el => fadeObserver.observe(el));
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => fadeObserver.observe(el));
+  } else {
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+  }
 
   /* ─── TIMING ROWS STAGGER ────────────────────────────── */
   const timingRows = document.querySelectorAll('.timing-row');

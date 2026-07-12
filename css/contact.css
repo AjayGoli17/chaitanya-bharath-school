@@ -538,11 +538,22 @@ textarea.form-control {
 
 /* ---------- SCROLL REVEAL (fade-up) ---------- */
 .fade-up {
-  /* FIXED: Form visible by default without JS */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  transition-delay: var(--delay, 0ms);
+}
+.fade-up.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-  transition-delay: var(--delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Sidebar close button */
