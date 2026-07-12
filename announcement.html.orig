@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Announcements, Holiday Calendar & Exam Notices | Chaitanya Bharath School, Sircilla</title>
+<link rel="icon" href="logo1.png">
+<link rel="apple-touch-icon" href="logo1.png">
+<meta name="description" content="Stay updated with the latest announcements, examination notices, holiday calendar, admissions, school events, and official circulars from Chaitanya Bharath School, Sircilla, Telangana.">
+<meta name="keywords" content="Chaitanya Bharath School, Sircilla school announcements, school notice board, Telangana school holidays, exam schedule, admissions, school events, nursery to grade 7, best school in Sircilla">
+<link rel="canonical" href="https://www.chaitanyabharathschool.com/announcement.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Latest School Announcements | Chaitanya Bharath School">
+<meta property="og:description" content="Latest exam schedules, holiday calendar, school events and official notices.">
+<meta property="og:image" content="https://www.chaitanyabharathschool.com/images/announcement-cover.jpg">
+<meta property="og:url" content="https://www.chaitanyabharathschool.com/announcement.html">
+<meta property="og:site_name" content="Chaitanya Bharath School">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Latest School Announcements">
+<meta name="twitter:description" content="Official announcements, exam notices and holiday calendar.">
+<meta name="twitter:image" content="https://www.chaitanyabharathschool.com/images/announcement-cover.jpg">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"School",
+  "name":"Chaitanya Bharath School",
+  "url":"https://www.chaitanyabharathschool.com",
+  "logo":"https://www.chaitanyabharathschool.com/logo1.png",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"8-2-124, Gandhinagar",
+    "addressLocality":"Sircilla",
+    "addressRegion":"Telangana",
+    "postalCode":"505301",
+    "addressCountry":"IN"
+  },
+  "telephone":"+91 7416709883"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/announcement.css">
+</head>
+<body>
+
+  
+  <header class="header">
+    <div class="container">
+        <a href="index.html" class="logo-area">
+            <img src="logo1.png" alt="CBS Logo" class="logo-image-fixed">
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="academics.html">Academics</a>
+          <a href="facilities.html">Facilities</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="faculty.html">Faculty</a>
+          <a href="announcement.html" class="active">Announcements</a>
+            <a href="contact.html" class="nav-cta nav-cta-mobile">Enquire Now</a>  <!-- ADD THIS LINE -->
+
+        </nav>
+
+        <a href="contact.html" class="nav-cta nav-cta-desktop">Enquire Now</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+  <section class="ann-hero" style="background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.40)), url('notice.jpg') center/cover no-repeat; background-color: #0a1f3f;">
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero-eyebrow hero-animate" style="animation-delay: 0.1s;">OFFICIAL ANNOUNCEMENTS</div>
+      <h1 class="hero-animate" style="animation-delay: 0.25s;">Notice Board</h1>
+      <p class="hero-animate" style="animation-delay: 0.4s;">Stay informed with the latest school announcements, examination schedules, admissions updates, holiday calendar, events, competitions, and official notices from Chaitanya Bharath School, Sircilla.</p>
+    </div>
+  </section>
+
+  <section class="announcements-section container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow-small">BROADCAST</div>
+        <h2 class="section-title" style="margin-bottom: 0;">Latest Announcements</h2>
+      </div>
+      <div class="archive-link">Archive 2024 ↻</div>
+    </div>
+
+    <div class="ann-grid" id="announcements-list">
+      <p style="padding:20px;">Loading announcements…</p>
+    </div>
+  </section>
+
+  <section class="exam-section container">
+    <h2 class="section-title section-title-center">Examination Notices</h2>
+
+    <div class="exam-grid" id="exam-schedules-list">
+      <p style="padding:20px;">Loading examination schedules…</p>
+    </div>
+  </section>
+
+  <section class="holiday-events container">
+    <div>
+      <div class="holiday-head">
+        <h2 class="section-title" style="margin-bottom: 0;">Holiday List 2026-27</h2>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Month</th><th>Occasion</th><th>Dates</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>July</td><td>Working Saturday (makeup day)</td><td>Jul 11</td></tr>
+            <tr><td>August</td><td>Bonalu</td><td>Aug 10</td></tr>
+            <tr><td>August</td><td>Independence Day</td><td>Aug 15</td></tr>
+            <tr><td>August</td><td>Eid Milad-un-Nabi</td><td>Aug 26</td></tr>
+            <tr><td>September</td><td>Vinayaka Chavithi</td><td>Sep 14</td></tr>
+            <tr><td>October</td><td>Gandhi Jayanthi</td><td>Oct 02</td></tr>
+            <tr><td>October</td><td>Dasara / Dussehra Vacation</td><td>Oct 10 - Oct 22</td></tr>
+            <tr><td>October</td><td>Saddula Bathukamma</td><td>Oct 18</td></tr>
+            <tr><td>November</td><td>Diwali</td><td>Nov 08</td></tr>
+            <tr><td>November</td><td>Guru Nanak Jayanti</td><td>Nov 24</td></tr>
+            <tr><td>December</td><td>Christmas Vacation</td><td>Dec 23 - Dec 27</td></tr>
+            <tr><td>January</td><td>Sankranti Vacation</td><td>Jan 13 - Jan 17</td></tr>
+            <tr><td>January</td><td>Republic Day</td><td>Jan 26</td></tr>
+            <tr><td>March</td><td>Half-day School Schedule Begins</td><td>Mar 15</td></tr>
+            <tr><td>March</td><td>SSC Board Exams Begin</td><td>March</td></tr>
+            <tr><td>April</td><td>Last Working Day</td><td>Apr 23</td></tr>
+            <tr><td>April - June</td><td>Summer Vacation</td><td>Apr 24 - Jun 13</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="holiday-note">
+        Note: Festival dates from Jan–Apr (Holi, Ugadi, Eid, Ram Navami, etc.) depend on the lunar calendar and will be added once the official Telangana GO is released.
+      </div>
+      <a href="calender.pdf" download="Chaitanya-Bharath-Holiday-Calendar.pdf" class="download-cal-btn">↓ Download Holiday Calendar PDF</a>
+    </div>
+
+    <div>
+      <div class="events-head"><h2 class="section-title">Upcoming Events</h2></div>
+      <div class="timeline" id="events-list">
+        <p style="padding:20px;">Loading events…</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">Chaitanya Bharath<br>School</div>
+<p class="footer-desc">
+A warm, caring place where children from nursery to grade 7 learn, play and grow with confidence.
+</p>
+
+<div class="social-icons">
+<a href="#" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/chaitanyabharathschool?igsh=MTQ3Y3hmZDNmdnh4Mg==" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/917416709883" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+</div>
+            </div>
+            <div>
+                <h4>Quick links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="academics.html">About us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="contact.html">Admissions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>School info</h4>
+                <ul class="footer-links">
+                    <li><a href="announcement.html">Notice board</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="faculty.html">Faculty</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Visit us</h4>
+                <div class="visit-card">
+                    <div class="visit-item"><i class="fa-solid fa-location-dot"></i><span>8-2-124, Gandhinagar, Sircilla - 505301</span></div>
+                    <div class="visit-item"><i class="fa-solid fa-phone"></i><span>+91 7416709883</span></div>
+                    <div class="visit-item"><i class="fa-regular fa-clock"></i><span>Mon-Sat, 8:30 AM - 4:30 PM</span></div>
+                    <a href="#" class="btn-directions">Get directions</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chaitanya Bharath School. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy policy</a>
+                <a href="#">Terms of service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Netlify Identity Widget: required so invite/confirmation/recovery emails work -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                });
+            }
+        });
+    }
+</script>
+
+<script src="js/main.js"></script>
+  <script src="js/cms-content.js"></script>
+
+  <script src="js/announcement.js"></script>
+</body>
+</html>

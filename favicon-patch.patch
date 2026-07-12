@@ -1,0 +1,91 @@
+--- academics.html.orig3	2026-07-12 14:03:03.170216252 +0000
++++ academics.html	2026-07-12 14:03:05.907861020 +0000
+@@ -11,8 +11,8 @@
+     <meta name="robots" content="index,follow,max-image-preview:large">
+ 
+     <!-- Favicon -->
+-    <link rel="icon" href="logo1.png">
+-    <link rel="apple-touch-icon" href="logo1.png">
++    <link rel="icon" href="favicon.png">
++    <link rel="apple-touch-icon" href="favicon.png">
+     <meta name="theme-color" content="#0A1F44">
+ 
+     <!-- Geo Tags -->
+--- contact.html.orig3	2026-07-12 14:03:03.172803477 +0000
++++ contact.html	2026-07-12 14:03:05.910216591 +0000
+@@ -17,8 +17,8 @@
+ 
+ <meta name="theme-color" content="#0A1F44">
+ 
+-<link rel="icon" href="logo1.png">
+-<link rel="apple-touch-icon" href="logo1.png">
++<link rel="icon" href="favicon.png">
++<link rel="apple-touch-icon" href="favicon.png">
+ 
+ <meta name="geo.region" content="IN-TG">
+ <meta name="geo.placename" content="Sircilla">
+--- facilities.html.orig3	2026-07-12 14:03:03.175600435 +0000
++++ facilities.html	2026-07-12 14:03:05.917016681 +0000
+@@ -10,8 +10,8 @@
+ <meta name="robots" content="index,follow,max-image-preview:large">
+ 
+ <!-- Favicon -->
+-<link rel="icon" href="logo1.png">
+-<link rel="apple-touch-icon" href="logo1.png">
++<link rel="icon" href="favicon.png">
++<link rel="apple-touch-icon" href="favicon.png">
+ <meta name="theme-color" content="#0A1F44">
+ 
+ <!-- Geo Tags -->
+--- faculty.html.orig3	2026-07-12 14:03:03.178469002 +0000
++++ faculty.html	2026-07-12 14:03:05.924069916 +0000
+@@ -11,8 +11,8 @@
+ <meta name="robots" content="index,follow,max-image-preview:large">
+ <meta name="theme-color" content="#0A1F44">
+ 
+-<link rel="icon" href="logo1.png">
+-<link rel="apple-touch-icon" href="logo1.png">
++<link rel="icon" href="favicon.png">
++<link rel="apple-touch-icon" href="favicon.png">
+ 
+ <meta name="geo.region" content="IN-TG">
+ <meta name="geo.placename" content="Sircilla">
+--- gallery.html.orig3	2026-07-12 14:03:03.180261322 +0000
++++ gallery.html	2026-07-12 14:03:05.931315162 +0000
+@@ -11,8 +11,8 @@
+ <link rel="canonical" href="https://www.chaitanyabharathschool.com/gallery.html">
+ <meta name="robots" content="index,follow,max-image-preview:large">
+ <meta name="theme-color" content="#0A1F44">
+-<link rel="icon" href="logo1.png">
+-<link rel="apple-touch-icon" href="logo1.png">
++<link rel="icon" href="favicon.png">
++<link rel="apple-touch-icon" href="favicon.png">
+ 
+ <!-- Geo SEO -->
+ <meta name="geo.region" content="IN-TG">
+--- index.html.orig3	2026-07-12 14:03:03.181899528 +0000
++++ index.html	2026-07-12 14:03:05.937574460 +0000
+@@ -36,8 +36,8 @@
+ 
+     <!-- ============ THEME / ICONS ============ -->
+     <meta name="theme-color" content="#0A1F44">
+-    <link rel="icon" href="logo1.png">
+-    <link rel="apple-touch-icon" href="logo1.png">
++    <link rel="icon" href="favicon.png">
++    <link rel="apple-touch-icon" href="favicon.png">
+     <meta name="msapplication-TileColor" content="#0A1F44">
+ 
+     <!-- ============ PERFORMANCE ============ -->
+--- announcement.html.orig3	2026-07-12 14:03:03.183671153 +0000
++++ announcement.html	2026-07-12 14:03:18.083853463 +0000
+@@ -4,8 +4,8 @@
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>School Announcements, Holiday Calendar & Exam Notices | Chaitanya Bharath School, Sircilla</title>
+-<link rel="icon" href="logo1.png">
+-<link rel="apple-touch-icon" href="logo1.png">
++<link rel="icon" href="favicon.png">
++<link rel="apple-touch-icon" href="favicon.png">
+ <meta name="description" content="Stay updated with the latest announcements, examination notices, holiday calendar, admissions, school events, and official circulars from Chaitanya Bharath School, Sircilla, Telangana.">
+ <meta name="keywords" content="Chaitanya Bharath School, Sircilla school announcements, school notice board, Telangana school holidays, exam schedule, admissions, school events, nursery to grade 7, best school in Sircilla">
+ <link rel="canonical" href="https://www.chaitanyabharathschool.com/announcement.html">

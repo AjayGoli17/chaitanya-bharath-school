@@ -1,0 +1,90 @@
+diff -ruN a/admin/config.yml b/admin/config.yml
+--- a/admin/config.yml	2026-07-12 14:38:03.623413228 +0000
++++ b/admin/config.yml	2026-07-12 14:38:16.334163183 +0000
+@@ -32,6 +32,16 @@
+       - { label: "Event Name", name: "title", widget: "string" }
+       - { label: "Date", name: "date", widget: "datetime" }
+       - { label: "Description", name: "description", widget: "text" }
++  - name: "home_page"
++    label: "Home Page"
++    files:
++      - name: "home"
++        label: "Leadership Section"
++        file: "content/home.json"
++        fields:
++          - { label: "Principal Photo", name: "principal_photo", widget: "image" }
++          - { label: "Principal Name", name: "principal_name", widget: "string" }
++          - { label: "Principal Role", name: "principal_role", widget: "string", default: "Principal, CBS" }
+   - name: "faculty_page"
+     label: "Faculty Page"
+     files:
+diff -ruN a/content/home.json b/content/home.json
+--- a/content/home.json	1970-01-01 00:00:00.000000000 +0000
++++ b/content/home.json	2026-07-12 14:38:19.544555312 +0000
+@@ -0,0 +1,5 @@
++{
++  "principal_photo": "/principal.jpg",
++  "principal_name": "Ms. Kalyani",
++  "principal_role": "Principal, CBS"
++}
+diff -ruN a/index.html b/index.html
+--- a/index.html	2026-07-12 14:38:03.616954288 +0000
++++ b/index.html	2026-07-12 14:38:12.231457128 +0000
+@@ -219,7 +219,7 @@
+     <section class="leadership">
+         <div class="container">
+             <div class="lead-image">
+-                <img src="principal.jpg" alt="Ms. Kalyani, Principal of Chaitanya Bharath School">
++                <img id="principalPhoto" src="principal.jpg" alt="Ms. Kalyani, Principal of Chaitanya Bharath School">
+                 <div class="lead-name">
+                     <h4>Ms. Kalyani</h4>
+                     <p>Principal, CBS</p>
+@@ -619,6 +619,7 @@
+     </script>
+ 
+     <script src="js/main.js"></script>
++    <script src="js/home.js"></script>
+ 
+ 
+     <script src="js/homepage.js"></script>
+diff -ruN a/js/home.js b/js/home.js
+--- a/js/home.js	2026-07-12 14:38:03.625536893 +0000
++++ b/js/home.js	2026-07-12 14:38:28.660555646 +0000
+@@ -0,0 +1,37 @@
++/* =========================================================
++   home.js
++   Reads content/home.json (CMS-managed) and applies the
++   Principal photo/name/role to the homepage leadership
++   section. Falls back to whatever is already in the HTML
++   if the fetch fails, so the page never breaks.
++   ========================================================= */
++
++(function () {
++  fetch("content/home.json", { cache: "no-store" })
++    .then(res => {
++      if (!res.ok) throw new Error("home.json not found");
++      return res.json();
++    })
++    .then(data => {
++      const img = document.getElementById("principalPhoto");
++      if (img && data.principal_photo) {
++        img.src = data.principal_photo;
++      }
++      if (img && data.principal_name) {
++        img.alt = data.principal_name + ", Principal of Chaitanya Bharath School";
++      }
++
++      const nameEl = document.querySelector(".lead-name h4");
++      if (nameEl && data.principal_name) {
++        nameEl.textContent = data.principal_name;
++      }
++
++      const roleEl = document.querySelector(".lead-name p");
++      if (roleEl && data.principal_role) {
++        roleEl.textContent = data.principal_role;
++      }
++    })
++    .catch(err => {
++      console.warn("home.js: could not load content/home.json —", err.message);
++    });
++})();

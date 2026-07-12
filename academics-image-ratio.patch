@@ -1,0 +1,48 @@
+diff -ruN a/css/academics.css b/css/academics.css
+--- a/css/academics.css	2026-07-12 14:51:28.090490950 +0000
++++ b/css/academics.css	2026-07-12 14:51:46.435610012 +0000
+@@ -135,13 +135,13 @@
+ .stage-i-text h2 { font-size: 38px; margin-bottom: 16px; line-height: 1.1; }
+ .comp-1 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: start; }
+ .comp-1-left  { width: 100%; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--border-radius-md); }
+-.comp-1-right { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--border-radius-md); margin-top: 80px; }
++.comp-1-right { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--border-radius-md); margin-top: 0; }
+ 
+ .stage-ii-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; margin-bottom: 100px; }
+ .stage-ii-text h2 { font-size: 38px; margin-bottom: 16px; line-height: 1.1; }
+ .comp-2 { display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; align-items: start; }
+-.comp-2-left  { width: 100%; aspect-ratio: 3/4.2; object-fit: cover; border-radius: var(--border-radius-md); }
+-.comp-2-right { width: 100%; aspect-ratio: 3/4;   object-fit: cover; border-radius: var(--border-radius-md); margin-top: 60px; }
++.comp-2-left  { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--border-radius-md); }
++.comp-2-right { width: 100%; aspect-ratio: 4/3;   object-fit: cover; border-radius: var(--border-radius-md); margin-top: 0; }
+ 
+ .stage-iii-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center; margin-bottom: 40px; }
+ .stage-iii-text h2 { font-size: 38px; margin-bottom: 16px; line-height: 1.1; }
+@@ -211,9 +211,7 @@
+ 
+     /* Image pairs → side by side small */
+     .comp-1 { grid-template-columns: 1fr 1fr; gap: 10px; }
+-    .comp-1-right { margin-top: 28px; }
+     .comp-2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+-    .comp-2-right { margin-top: 20px; }
+ 
+     /* Beyond */
+     .beyond-section { padding: 48px 0; }
+@@ -258,8 +256,6 @@
+     .stage-i-text h2, .stage-ii-text h2, .stage-iii-text h2 { font-size: 28px; }
+     .stage-ii-row .comp-2 { order: 1; }
+     .stage-ii-row .stage-ii-text { order: 0; }
+-    .comp-1-right { margin-top: 24px; }
+-    .comp-2-right { margin-top: 20px; }
+ 
+     .beyond-section { padding: 56px 0; }
+     .beyond-row { grid-template-columns: 1fr; gap: 36px; }
+@@ -287,8 +283,6 @@
+     .section-header h2 { font-size: 34px; }
+     .stage-i-row, .stage-ii-row, .stage-iii-row { gap: 40px; }
+     .stage-i-text h2, .stage-ii-text h2, .stage-iii-text h2 { font-size: 30px; }
+-    .comp-1-right { margin-top: 48px; }
+-    .comp-2-right { margin-top: 36px; }
+ 
+     .beyond-text h2 { font-size: 28px; }
+     .beyond-row { gap: 48px; }

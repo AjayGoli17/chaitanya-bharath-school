@@ -134,14 +134,33 @@ body { background: var(--page-bg); }
 .stage-i-row  { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; margin-bottom: 100px; }
 .stage-i-text h2 { font-size: 38px; margin-bottom: 16px; line-height: 1.1; }
 .comp-1 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-.comp-1-left  { width: 100%; border-radius: var(--border-radius-md); }
-.comp-1-right { width: 100%; border-radius: var(--border-radius-md); margin-top: 0; }
+.comp-1-left,
+.comp-1-right {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+}
 
 .stage-ii-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; margin-bottom: 100px; }
 .stage-ii-text h2 { font-size: 38px; margin-bottom: 16px; line-height: 1.1; }
-.comp-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-.comp-2-left  { width: 100%; border-radius: var(--border-radius-md); }
-.comp-2-right { width: 100%; border-radius: var(--border-radius-md); margin-top: 0; }
+.comp-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.comp-2-left,
+.comp-2-right {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+}
+.comp-2-right { margin-top: 48px; }
 
 .stage-iii-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center; margin-bottom: 40px; }
 .stage-iii-text h2 { font-size: 38px; margin-bottom: 16px; line-height: 1.1; }
@@ -209,9 +228,12 @@ body { background: var(--page-bg); }
     .stage-ii-row .comp-2 { order: 1; }
     .stage-ii-row .stage-ii-text { order: 0; }
 
-    /* Image pairs → side by side small */
+    /* Image pairs → side by side small, shorter ratio so the pair doesn't run tall */
     .comp-1 { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .comp-2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .comp-2 { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .comp-1-left, .comp-1-right { max-height: 220px; }
+    .comp-2-left, .comp-2-right { max-height: 280px; }
+    .comp-2-right { margin-top: 24px; }
 
     /* Beyond */
     .beyond-section { padding: 48px 0; }
