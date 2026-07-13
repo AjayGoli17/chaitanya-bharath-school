@@ -91,11 +91,21 @@ function toggleVideo(wrapper) {
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
     let touchStartX = 0;
-    slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    let touchStartY = 0;
+    slider.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
     slider.addEventListener('touchend', e => {
         if (!isSliderActive()) return;
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+        const diffX = touchStartX - e.changedTouches[0].clientX;
+        const diffY = touchStartY - e.changedTouches[0].clientY;
+        // Only treat as a slide swipe if the movement is mostly horizontal.
+        // A vertical page-scroll over the slider was previously being
+        // misread as a swipe, which pushed the whole card track off-screen.
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+            goTo(diffX > 0 ? current + 1 : current - 1);
+        }
     });
 
     window.addEventListener('resize', () => {
