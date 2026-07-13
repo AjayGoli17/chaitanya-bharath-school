@@ -57,6 +57,7 @@ function toggleVideo(wrapper) {
     const prevBtn = document.getElementById('testPrev');
     const nextBtn = document.getElementById('testNext');
     const dotsContainer = document.getElementById('testDots');
+    const hint = document.getElementById('testSwipeHint');
 
     if (!slider || !prevBtn || !nextBtn) return;
 
@@ -69,6 +70,16 @@ function toggleVideo(wrapper) {
         return window.innerWidth <= 1024;
     }
 
+    // Cards are intentionally narrower than the wrapper on mobile so
+    // the next card peeks in as a visual cue. That means a slide is
+    // no longer 100% of the track width, so measure the real step
+    // (card width + gap) instead of assuming 100%.
+    function getSlideStep() {
+        if (!cards[0]) return 0;
+        const gap = parseFloat(getComputedStyle(slider).columnGap || getComputedStyle(slider).gap || '0');
+        return cards[0].getBoundingClientRect().width + gap;
+    }
+
     function goTo(index) {
         if (!isSliderActive()) return;
         if (cards[current]) {
@@ -76,7 +87,7 @@ function toggleVideo(wrapper) {
             cards[current].style.transform = 'scale(0.97)';
         }
         current = (index + total) % total;
-        slider.style.transform = `translateX(-${current * 100}%)`;
+        slider.style.transform = `translateX(-${getSlideStep() * current}px)`;
         dots.forEach((d, i) => d.classList.toggle('active', i === current));
         setTimeout(() => {
             if (cards[current]) {
@@ -84,6 +95,33 @@ function toggleVideo(wrapper) {
                 cards[current].style.transform = 'scale(1)';
             }
         }, 40);
+        dismissHint();
+    }
+
+    // Swipe hint: fade in and nudge once the first time the section
+    // scrolls into view on mobile, then disappear once the person
+    // has interacted with the slider at all.
+    let hintDismissed = false;
+    function dismissHint() {
+        if (!hint || hintDismissed) return;
+        hintDismissed = true;
+        hint.classList.remove('show', 'nudge');
+    }
+
+    if (hint && isSliderActive() && 'IntersectionObserver' in window) {
+        const hintObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hintDismissed) {
+                    hint.classList.add('show', 'nudge');
+                    setTimeout(() => {
+                        if (!hintDismissed) hint.classList.remove('nudge');
+                    }, 2400);
+                    setTimeout(dismissHint, 5000);
+                    hintObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.4 });
+        hintObserver.observe(slider);
     }
 
     prevBtn.addEventListener('click', () => goTo(current - 1));
@@ -113,7 +151,7 @@ function toggleVideo(wrapper) {
             slider.style.transform = '';
             cards.forEach(c => { c.style.opacity = ''; c.style.transform = ''; });
         } else {
-            goTo(current);
+            slider.style.transform = `translateX(-${getSlideStep() * current}px)`;
         }
     });
 })();
