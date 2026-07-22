@@ -1,0 +1,161 @@
+--- a/index.html	2026-07-13 04:11:18.197376935 +0000
++++ b/index.html	2026-07-13 04:11:18.207096574 +0000
+@@ -493,6 +493,11 @@
+                         <i class="fa-solid fa-chevron-right"></i>
+                     </button>
+                 </div>
++                <div class="test-swipe-hint" id="testSwipeHint">
++                    <i class="fa-solid fa-chevron-left"></i>
++                    <span>Swipe for more</span>
++                    <i class="fa-solid fa-chevron-right"></i>
++                </div>
+             </div>
+         </div>
+     </section>
+--- a/css/homepage.css	2026-07-13 04:11:18.194488936 +0000
++++ b/css/homepage.css	2026-07-13 04:11:18.203595764 +0000
+@@ -504,16 +504,19 @@
+     .features-grid, .events-grid { grid-template-columns: 1fr; }
+     .feat-concept { grid-column: span 1; }
+ 
+-    /* Testimonial slider: real horizontal track, one card per slide */
++    /* Testimonial slider: real horizontal track, one card mostly in
++       view with the next card peeking in on the right as a visual
++       cue that the section is swipeable */
+     .test-slider-wrapper { overflow: hidden; }
+     .test-grid {
+         display: flex;
+         flex-wrap: nowrap;
+         grid-template-columns: unset;
++        gap: 14px;
+     }
+     .test-card {
+-        flex: 0 0 100%;
+-        width: 100%;
++        flex: 0 0 86%;
++        width: 86%;
+     }
+     .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 12px; }
+     .gal-large { grid-column: 1 / 2; grid-row: 1 / 3; min-height: 280px; }
+@@ -783,6 +786,9 @@
+     gap: 20px;
+     margin-top: 28px;
+ }
++@media (max-width: 1024px) {
++    .test-slider-controls { display: flex; }
++}
+ .test-slider-btn {
+     width: 42px;
+     height: 42px;
+@@ -815,6 +821,32 @@
+     background: var(--primary-dark, #061938);
+     transform: scale(1.3);
+ }
++
++/* Swipe hint: quiet label + nudging arrow, shown briefly the first
++   time the section scrolls into view on mobile */
++.test-swipe-hint {
++    display: none;
++    align-items: center;
++    justify-content: center;
++    gap: 6px;
++    margin-top: 10px;
++    font-size: 12px;
++    color: var(--text-muted);
++    opacity: 0;
++    transition: opacity 0.4s ease;
++}
++@media (max-width: 1024px) {
++    .test-swipe-hint { display: flex; }
++}
++.test-swipe-hint.show { opacity: 1; }
++.test-swipe-hint i { font-size: 11px; }
++.test-swipe-hint.nudge i.fa-chevron-right {
++    animation: testHintNudge 1.1s ease-in-out 2;
++}
++@keyframes testHintNudge {
++    0%, 100% { transform: translateX(0); }
++    50% { transform: translateX(4px); }
++}
+ /* =========================================================
+    ANIMATION ADDITIONS
+    ========================================================= */
+--- a/js/homepage.js	2026-07-13 04:11:18.196307806 +0000
++++ b/js/homepage.js	2026-07-13 04:11:18.205120211 +0000
+@@ -57,6 +57,7 @@
+     const prevBtn = document.getElementById('testPrev');
+     const nextBtn = document.getElementById('testNext');
+     const dotsContainer = document.getElementById('testDots');
++    const hint = document.getElementById('testSwipeHint');
+ 
+     if (!slider || !prevBtn || !nextBtn) return;
+ 
+@@ -69,6 +70,16 @@
+         return window.innerWidth <= 1024;
+     }
+ 
++    // Cards are intentionally narrower than the wrapper on mobile so
++    // the next card peeks in as a visual cue. That means a slide is
++    // no longer 100% of the track width, so measure the real step
++    // (card width + gap) instead of assuming 100%.
++    function getSlideStep() {
++        if (!cards[0]) return 0;
++        const gap = parseFloat(getComputedStyle(slider).columnGap || getComputedStyle(slider).gap || '0');
++        return cards[0].getBoundingClientRect().width + gap;
++    }
++
+     function goTo(index) {
+         if (!isSliderActive()) return;
+         if (cards[current]) {
+@@ -76,7 +87,7 @@
+             cards[current].style.transform = 'scale(0.97)';
+         }
+         current = (index + total) % total;
+-        slider.style.transform = `translateX(-${current * 100}%)`;
++        slider.style.transform = `translateX(-${getSlideStep() * current}px)`;
+         dots.forEach((d, i) => d.classList.toggle('active', i === current));
+         setTimeout(() => {
+             if (cards[current]) {
+@@ -84,6 +95,33 @@
+                 cards[current].style.transform = 'scale(1)';
+             }
+         }, 40);
++        dismissHint();
++    }
++
++    // Swipe hint: fade in and nudge once the first time the section
++    // scrolls into view on mobile, then disappear once the person
++    // has interacted with the slider at all.
++    let hintDismissed = false;
++    function dismissHint() {
++        if (!hint || hintDismissed) return;
++        hintDismissed = true;
++        hint.classList.remove('show', 'nudge');
++    }
++
++    if (hint && isSliderActive() && 'IntersectionObserver' in window) {
++        const hintObserver = new IntersectionObserver((entries) => {
++            entries.forEach(entry => {
++                if (entry.isIntersecting && !hintDismissed) {
++                    hint.classList.add('show', 'nudge');
++                    setTimeout(() => {
++                        if (!hintDismissed) hint.classList.remove('nudge');
++                    }, 2400);
++                    setTimeout(dismissHint, 5000);
++                    hintObserver.disconnect();
++                }
++            });
++        }, { threshold: 0.4 });
++        hintObserver.observe(slider);
+     }
+ 
+     prevBtn.addEventListener('click', () => goTo(current - 1));
+@@ -113,7 +151,7 @@
+             slider.style.transform = '';
+             cards.forEach(c => { c.style.opacity = ''; c.style.transform = ''; });
+         } else {
+-            goTo(current);
++            slider.style.transform = `translateX(-${getSlideStep() * current}px)`;
+         }
+     });
+ })();

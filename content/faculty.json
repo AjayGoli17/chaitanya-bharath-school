@@ -1,136 +1,129 @@
 {
   "leadership": [
     {
-      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80",
+      "photo": "kalyani.jpg",
       "name": "Ms. Kalyani",
-      "role": "PRINCIPAL",
-      "education": "MCA, M.Sc, and B.Ed"
+      "role": "PRINCIPAL"
     },
     {
-      "photo": "/public/uploads/principal.jpg",
-      "name": "Ms. Lavanya",
-      "role": "HEAD OF MIDDLE STAGE",
-      "education": "M.Sc Mathematics, B.Ed"
+      "photo": "aruna.jpg",
+      "name": "Aruna",
+      "role": "School Incharge"
     },
     {
-      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&q=80",
-      "name": "Ms. Sarah Jenkins",
-      "role": "HEAD OF FOUNDATION STAGE",
-      "education": "M.A. Early Childhood Development"
+      "photo": "accountant.jpg",
+      "name": "G. Sarika",
+      "role": "ACCOUNTANT"
     }
   ],
   "teachers": [
     {
       "category": "Foundation",
-      "photo": "/public/uploads/premium_photo-1675731938410-99ae5af70038.avif",
-      "name": "Ms. Aruna",
-      "role": "PRIMARY EDUCATOR",
-      "education": "B.A. English, Montessori Certified"
+      "photo": "Pre-Primary1.jpg",
+      "name": "K. Yashaswini",
+      "role": "English Teacher"
     },
     {
       "category": "Foundation",
-      "photo": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80",
-      "name": "Ms. Anjali Rao",
-      "role": "NURSERY EDUCATOR",
-      "education": "B.Ed, Early Years Certified"
+      "photo": "Pre-Primary2.jpg",
+      "name": "L. Bhavani",
+      "role": "EVS Teacher"
     },
     {
       "category": "Foundation",
-      "photo": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=80",
-      "name": "Ms. Fatima Sheikh",
-      "role": "KINDERGARTEN TEACHER",
-      "education": "B.A. Psychology, Montessori Certified"
+      "photo": "Pre-Primary3.jpg",
+      "name": "U. Roja",
+      "role": "Maths Teacher"
     },
     {
       "category": "Foundation",
-      "photo": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80",
-      "name": "Ms. Neha Kapoor",
-      "role": "PLAY GROUP EDUCATOR",
-      "education": "Diploma in Early Childhood Care"
+      "photo": "Pre-Primary4.jpg",
+      "name": "L. Akhila",
+      "role": "Mother Teacher"
     },
     {
       "category": "Foundation",
-      "photo": "/public/uploads/premium_photo-1675731938410-99ae5af70038.avif",
-      "name": "Ms. Divya ",
-      "role": "FOUNDATION STAGE EDUCATOR",
-      "education": "B.Ed, Montessori Certified"
+      "photo": "Pre-Primary5.jpg",
+      "name": "B. Swapana",
+      "role": "Mother Teacher"
     },
     {
       "category": "Foundation",
-      "photo": "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?w=400&q=80",
-      "name": "Ms. Ritika Chawla",
-      "role": "NURSERY ASSISTANT TEACHER",
-      "education": "Diploma in Early Childhood Care"
+      "photo": "Pre-Primary6.jpg",
+      "name": "K. Swapna",
+      "role": "Mother Teacher"
+    },
+    {
+      "category": "Foundation",
+      "photo": "Pre-Primary7.jpg",
+      "name": "M. Sony",
+      "role": "Mother Teacher"
+    },
+    {
+      "category": "Foundation",
+      "photo": "Pre-Primary8.jpg",
+      "name": "R. Rachana",
+      "role": "Mother Teacher"
+    },
+    {
+      "category": "Foundation",
+      "photo": "Pre-Primary9.jpg",
+      "name": "K. Lavanya",
+      "role": "Mother Teacher"
+    },
+    {
+      "category": "Foundation",
+      "photo": "Pre-Primary10.jpg",
+      "name": "P. Lavanya",
+      "role": "Mother Teacher"
     },
     {
       "category": "Preparatory",
-      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
-      "name": "Ms. Sravani Sharma",
-      "role": "HEAD OF FINE ARTS",
-      "education": "Master of Fine Arts (MFA)"
+      "photo": "primary1.jpg",
+      "name": "D. Sunitha",
+      "role": "Maths Teacher"
     },
     {
       "category": "Preparatory",
-      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-      "name": "Mr. Arjun Nair",
-      "role": "ENGLISH LANGUAGE TEACHER",
-      "education": "M.A. English Literature, B.Ed"
+      "photo": "primary2.jpg",
+      "name": "SJ. Anusha Bindu",
+      "role": "English Teacher"
     },
     {
       "category": "Preparatory",
-      "photo": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
-      "name": "Ms. Deepika Reddy",
-      "role": "MATHEMATICS TEACHER",
-      "education": "B.Sc Mathematics, B.Ed"
+      "photo": "primary3.jpg",
+      "name": "J. Vasudha",
+      "role": "Science/EVS Teacher"
     },
     {
       "category": "Preparatory",
-      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-      "name": "Mr. Sandeep Verma",
-      "role": "ENVIRONMENTAL SCIENCE TEACHER",
-      "education": "B.Sc Botany, B.Ed"
+      "photo": "primary4.jpg",
+      "name": "S. Jyothi",
+      "role": "Social Teacher"
     },
     {
-      "category": "Middle",
-      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-      "name": "Mr. Rahul Kumar",
-      "role": "DIRECTOR OF SPORTS",
-      "education": "B.PEd, Certified FIBA Coach"
+      "category": "Preparatory",
+      "photo": "primary5.jpg",
+      "name": "K. Amulya",
+      "role": "Telugu Teacher"
     },
     {
-      "category": "Middle",
-      "photo": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
-      "name": "Mr. Vikram Iyer",
-      "role": "STEM COORDINATOR",
-      "education": "M.Sc Physics, B.Ed"
+      "category": "Preparatory",
+      "photo": "primary6.jpg",
+      "name": "A. Samantha",
+      "role": "Hindi Teacher"
     },
     {
-      "category": "Middle",
-      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
-      "name": "Ms. Lavanya Pillai",
-      "role": "SOCIAL SCIENCE TEACHER",
-      "education": "M.A. History, B.Ed"
+      "category": "Preparatory",
+      "photo": "primary7.jpg",
+      "name": "A. Lasya Sri",
+      "role": "Mother Teacher"
     },
     {
-      "category": "Middle",
-      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-      "name": "Mr. Karan Malhotra",
-      "role": "COMPUTER SCIENCE TEACHER",
-      "education": "M.C.A, B.Ed"
-    },
-    {
-      "category": "Middle",
-      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-      "name": "Ms. Ananya Ghosh",
-      "role": "HINDI LANGUAGE TEACHER",
-      "education": "M.A. Hindi, B.Ed"
-    },
-    {
-      "category": "Middle",
-      "photo": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=80",
-      "name": "Mr. Vivek Choudhary",
-      "role": "CHEMISTRY TEACHER",
-      "education": "M.Sc Chemistry, B.Ed"
+      "category": "Preparatory",
+      "photo": "primary8.jpg",
+      "name": "M. Vandhana",
+      "role": "Mother Teacher"
     }
   ]
 }
