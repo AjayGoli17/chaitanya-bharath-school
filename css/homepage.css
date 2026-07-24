@@ -94,9 +94,9 @@ body { overflow-x: clip; max-width: 100%; }
 .hero-desc { color: var(--text-muted); margin-bottom: 40px; font-size: 16px; line-height: 1.7; max-width: 90%; }
 .hero-actions { display: flex; gap: 20px; }
 
-.hero-image-wrapper { flex: 1; position: relative; display: flex; justify-content: flex-end; padding: 20px; order: 2; }
+.hero-image-wrapper { flex: 1; position: relative; display: flex; justify-content: flex-end; padding: 100px 20px 20px; order: 2; }
 .hero-content { order: 1; }
-.hero-img-main { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 40px 200px 40px 200px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+.hero-img-main { width: 100%; aspect-ratio: 737 / 834; object-fit: cover; object-position: center top; border-radius: 40px 200px 40px 200px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
 .floating-badge { position: absolute; background: var(--white); padding: 16px 24px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 15px 35px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 15px; z-index: 2; font-family: var(--font-body); }
 .badge-text { display: flex; flex-direction: column; }
 .badge-text strong { color: var(--primary-dark); font-size: 14px; font-weight: 600; margin-bottom: 3px;}
@@ -420,13 +420,13 @@ body { overflow-x: clip; max-width: 100%; }
         max-width: 480px;
         margin: 0 auto;
         justify-content: center;
-        padding: 50px 40px 30px;
+        padding: 100px 40px 30px;
         position: relative;
         box-sizing: border-box;
     }
     .hero-img-main {
-        /* Organic blob shape matching the reference */
-        border-radius: 50% 45% 55% 40% / 45% 55% 40% 50%;
+        /* Diagonal rounded shape matching the desktop style, scaled for mobile */
+        border-radius: 24px 130px 24px 130px;
         width: 100%;
         max-width: 360px;
         aspect-ratio: 1 / 1;
@@ -1132,7 +1132,7 @@ html, body {
     }
 
     .hero-image-wrapper {
-        padding: 50px 20px 20px;
+        padding: 90px 20px 20px;
         width: 100%;
         max-width: 100%;
         overflow-x: clip;
