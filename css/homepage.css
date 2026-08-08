@@ -101,7 +101,7 @@ body { overflow-x: clip; max-width: 100%; }
 .badge-text { display: flex; flex-direction: column; }
 .badge-text strong { color: var(--primary-dark); font-size: 14px; font-weight: 600; margin-bottom: 3px;}
 .badge-text span { color: var(--text-muted); font-size: 11px; }
-.badge-top { top: 0px; left: -30px; }
+.badge-top { top: 100px; left: -30px; }
 .badge-bottom { bottom: 20px; right: 0px; }
 .icon-circle { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px;}
 .icon-green { background: #dcfce7; color: #15803d; }
@@ -436,7 +436,7 @@ body { overflow-x: clip; max-width: 100%; }
     /* Badge top-left — floating above image */
     .badge-top {
         position: absolute;
-        top: 14px;
+        top: 100px;
         left: 0px;
         right: auto;
         bottom: auto;
@@ -447,10 +447,10 @@ body { overflow-x: clip; max-width: 100%; }
         display: flex;
         max-width: 200px;
     }
-    /* Badge bottom-right — floating below image */
+    /* Badge bottom-right — floating below image, overlapping its bottom edge */
     .badge-bottom {
         position: absolute;
-        bottom: 14px;
+        bottom: 30px;
         right: 0px;
         left: auto;
         top: auto;
@@ -550,8 +550,8 @@ body { overflow-x: clip; max-width: 100%; }
     .hero-tagline { justify-content: center; margin-bottom: 14px; }
     .hero-image-wrapper { padding: 30px 30px 16px; max-width: 100%; }
     .hero-img-main { max-width: 220px; }
-    .badge-top { left: 0px; top: 8px; padding: 7px 10px; max-width: 170px; }
-    .badge-bottom { right: 0px; bottom: 8px; padding: 7px 10px; max-width: 170px; }
+    .badge-top { left: 0px; top: 30px; padding: 7px 10px; max-width: 170px; }
+    .badge-bottom { right: 0px; bottom: 16px; padding: 7px 10px; max-width: 170px; }
     .badge-text strong { font-size: 11px; }
     .badge-text span { font-size: 9px; }
     .icon-circle { width: 26px; height: 26px; font-size: 12px; }
@@ -630,8 +630,8 @@ body { overflow-x: clip; max-width: 100%; }
     .hero-tagline { font-size: 10px; padding: 7px 14px 7px 10px; }
     .hero-image-wrapper { padding: 24px 16px 12px; }
     .hero-img-main { max-width: 180px; }
-    .badge-top { max-width: 140px; padding: 6px 8px; left: 0; top: 6px; }
-    .badge-bottom { max-width: 140px; padding: 6px 8px; right: 0; bottom: 6px; }
+    .badge-top { max-width: 140px; padding: 6px 8px; left: 0; top: 24px; }
+    .badge-bottom { max-width: 140px; padding: 6px 8px; right: 0; bottom: 12px; }
     .badge-text strong { font-size: 10px; }
     .badge-text span { font-size: 8px; }
     .icon-circle { width: 22px; height: 22px; font-size: 10px; }
@@ -1143,10 +1143,21 @@ html, body {
         margin: 0 auto;
     }
 
-    /* Stop badges from poking outside */
+    /* Stop badges from poking outside, and give badge-top a small,
+       shallow overlap onto the photo's top-left corner (matches
+       .hero-image-wrapper padding-top: 90px above) — just enough to
+       visually connect with the image without dipping down far enough
+       to cover the children's heads/faces. Note: we use a plain "top"
+       offset here, not transform, because .badge-top already has its
+       own "animation: float ..." (see @keyframes float) which
+       continuously drives the transform property for the bobbing
+       effect — any transform set here would be silently overwritten
+       every frame. */
     .badge-top {
         left: 0 !important;
         right: auto !important;
+        top: 35px !important;
+        bottom: auto !important;
         max-width: 160px;
         font-size: 11px;
     }

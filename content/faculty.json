@@ -1,7 +1,7 @@
 {
   "leadership": [
     {
-      "photo": "kalyani.jpg",
+      "photo": "principal.jpg",
       "name": "Ms. Kalyani",
       "role": "PRINCIPAL"
     },
@@ -14,6 +14,11 @@
       "photo": "accountant.jpg",
       "name": "G. Sarika",
       "role": "ACCOUNTANT"
+    },
+    {
+      "photo": "ptteacher.jpg",
+      "name": "Sulthana",
+      "role": "P.T. Teacher"
     }
   ],
   "teachers": [
